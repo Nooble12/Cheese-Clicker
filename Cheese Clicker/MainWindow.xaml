@@ -7,20 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button
-            Name="cheeseButton"   
-            Margin="357,174,357,174" 
-            Content="Click Me"
-            Background="Gray"
-            Click="CheeseButton_Click"
-                >
-        </Button>
+        <Frame Name="MainFrame" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
 
-        <Label
-            Name="MoneyLabel"
-            Content="Money: " Margin="274,279,274,121"
-            
-            >
-        </Label>
+        <Button Name="cheeseButton"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" 
+                Content="Click Me"
+                Background="Gray"
+                Click="CheeseButton_Click" Height="90" Width="90"/>
+
+        <Button 
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+                Content="Shop"
+                Click="ShopButton_Click" Height="192" Width="44"/>
+
+        <Label Name="MoneyLabel"
+               FontSize="20"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Content="Money: " Width="337"/>
     </Grid>
 </Window>

@@ -17,16 +17,21 @@ namespace Cheese_Clicker;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private PlayerData playerData = new PlayerData();
+    private PlayerData player = new PlayerData(1000);
     public MainWindow()
     {
         InitializeComponent();
     }
     private void CheeseButton_Click(object sender, RoutedEventArgs e)
     {
-        BounceElement element = new BounceElement(cheeseButton);
-        playerData.AddMoney(1);
+        BounceElement element = new(cheeseButton);
+        player.AddMoney(1);
 
-        MoneyLabel.Content = ("Money: " + playerData.GetMoney());
+        MoneyLabel.Content = ("Money: " + player.GetMoney());
+    }
+
+    private void ShopButton_Click(object sender, RoutedEventArgs e)
+    {
+        MainFrame.Navigate(new ShopMenu(player));
     }
 }
