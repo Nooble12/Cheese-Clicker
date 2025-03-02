@@ -1,0 +1,13 @@
+﻿<Window x:Class="Cheese_Clicker.LauncherWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cheese_Clicker"
+        mc:Ignorable="d"
+        Title="Cheese Clicker Launcher" Height="450" Width="800">
+    <Grid>
+        <Frame Name="LauncherWin" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
+        <Button Name="PlayButton" HorizontalAlignment="Center" VerticalAlignment="Center" Height="53" Width="140" Content="Play" Click="PlayButton_Click"/>
+    </Grid>
+</Window>

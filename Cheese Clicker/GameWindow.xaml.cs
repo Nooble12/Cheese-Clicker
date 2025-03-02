@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using Cheese_Clicker.ModifierClasses;
+using Cheese_Clicker.Pages;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -15,23 +17,15 @@ namespace Cheese_Clicker;
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
-public partial class MainWindow : Window
+public partial class GameWindow : Window
 {
     private PlayerData player = new PlayerData(1000);
-    public MainWindow()
+    private ModifierManager modifiers = new ModifierManager();
+    public GameWindow()
     {
         InitializeComponent();
+        MainFrame.Visibility = Visibility.Visible;
+        MainFrame.Navigate(new GamePage(player, modifiers));
     }
-    private void CheeseButton_Click(object sender, RoutedEventArgs e)
-    {
-        BounceElement element = new(cheeseButton);
-        player.AddMoney(1);
-
-        MoneyLabel.Content = ("Money: " + player.GetMoney());
-    }
-
-    private void ShopButton_Click(object sender, RoutedEventArgs e)
-    {
-        MainFrame.Navigate(new ShopMenu(player));
-    }
+   
 }

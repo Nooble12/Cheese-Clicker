@@ -32,8 +32,7 @@ namespace Cheese_Clicker
 
         private void ShopBackButton_Click(object sender, RoutedEventArgs e)
         {
-            Visibility = Visibility.Collapsed;
-            
+            NavigationService.GoBack();
         }
 
         private void setUIElements()
