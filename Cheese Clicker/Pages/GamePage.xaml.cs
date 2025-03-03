@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,6 +31,10 @@ namespace Cheese_Clicker.Pages
             InitializeComponent();
             this.player = player;
             this.modifierManager = manager;
+            UpdateUI(player.GetMoney());
+            UpdateModList();
+
+            this.Loaded += GamePage_Loaded; // Ensure updates when returning
         }
 
         private void CheeseButton_Click(object sender, RoutedEventArgs e)
@@ -56,30 +61,19 @@ namespace Cheese_Clicker.Pages
             cheeseButton.Content = ("$" + moneyGained);
             MoneyLabel.Content = ("Money: $" + player.GetMoney());
             ClickCountLabel.Content = ("Clicks: " + player.GetClickCount());
-
-            
         }
-
-        private void GiveMultiplyMod_Click(object sender, RoutedEventArgs e)
-        {
-            Modifiers multiplyMod = new MultiplierModifier();
-            modifierManager.AddModifier(multiplyMod);
-            UpdateModList();
-
-        }
-
-        private void GiveAddMod_Click(object sender, RoutedEventArgs e)
-        {
-            Modifiers modAdd = new AdditiveModifier();
-            modifierManager.AddModifier(modAdd);
-
-            UpdateModList();
-
-        }
-
         private void UpdateModList()
         {
             ModifierLabel.Content = modifierManager.GetModifierList();
+        }
+
+        private void AdminButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AdminControlPage(modifierManager));
+        }
+        private void GamePage_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateModList(); // Refresh on navigation back
         }
     }
 }

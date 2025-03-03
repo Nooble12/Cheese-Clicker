@@ -23,7 +23,6 @@
             <Label Content="Modifers: " Width="240" Name="ModifierLabel"></Label>
         </StackPanel>
 
-        <Button Name="GiveMultiplyMod" Content="Give Multiply Mod" Margin="133,321,523,78" Click="GiveMultiplyMod_Click"></Button>
-        <Button Name="GiveAddMod" Content="Give Add Mod" Margin="133,265,523,134" Click="GiveAddMod_Click"></Button>
+        <Button Name="AdminControlButton" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="47" Width="148" Content="Admin Controls" Click="AdminButton_Click"></Button>
     </Grid>
 </Page>

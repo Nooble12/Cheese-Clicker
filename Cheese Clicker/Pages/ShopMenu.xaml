@@ -12,8 +12,8 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Width="780">
-            <Label Content="Money: " FontSize="40"/>
-            <Label x:Name="balanceLabel" Content="Balance: " FontSize="20"/>
+            <Label Content="Shop " FontSize="40"/>
+            <Label x:Name="balanceLabel" Content="Money: " FontSize="20"/>
         </StackPanel>
 
         <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Back" Margin="10,0,0,10" Click="ShopBackButton_Click" Width="97" Height="45"></Button>
