@@ -1,4 +1,5 @@
-﻿using Cheese_Clicker.Generators;
+﻿using Cheese_Clicker.Animations;
+using Cheese_Clicker.Generators;
 using Cheese_Clicker.ModifierClasses;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,8 @@ namespace Cheese_Clicker.Pages
 
             player.IncrementClickCount();
             UpdateUI(moneyGained);
+
+            MoneyLabelEffect effect = new MoneyLabelEffect(this, cheeseButton, moneyGained);
         }
 
         private void ShopButton_Click(object sender, RoutedEventArgs e)
