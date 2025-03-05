@@ -11,8 +11,10 @@ git clone https://github.com/Nooble12/Cheese-Clicker.git
 Build and run the application.
 
 # Planned Updates (Slow)
-Local player data saving. Multiple local profiles can be created and loaded.
+Local player data saving. Multiple local profiles can be created and loaded.  
 Add shop items to sell modifiers.  
 Add weapons that work with the modifiers to increase money generation.  
-Positive and negative modifiers for risky builds.
+Positive and negative modifiers for risky builds.  
 Refine the user interface for better visual appeal.  
+
+![cheese_ghost](https://github.com/user-attachments/assets/2b09bf77-b681-4942-9a5f-0742277439c9)
