@@ -11,14 +11,9 @@ using System.Windows;
 
 namespace Cheese_Clicker
 {
-    class BounceElement
+    public class BounceElement
     {
-        public BounceElement(Button inButton)
-        {
-            PlayAnimation(inButton);
-        }
-
-        private void PlayAnimation(Button inButton)
+        public void PlayAnimation(Button inButton)
         {
             inButton.RenderTransformOrigin = new Point(0.5, 0.5);
             var scaleTransform = new ScaleTransform(1, 1);

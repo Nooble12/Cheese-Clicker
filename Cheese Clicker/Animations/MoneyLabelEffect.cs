@@ -14,23 +14,18 @@ namespace Cheese_Clicker.Animations
     public class MoneyLabelEffect
     {
         private Page currentPage;
-        private Button currentButton;
-        private int moneyAmount;
 
         private Random generator = new Random();
-        public MoneyLabelEffect(Page inPage, Button inButton, int inMoneyAmount)
+        public MoneyLabelEffect(Page inPage)
         {
-            currentButton = inButton;
             currentPage = inPage;
-            moneyAmount = inMoneyAmount;
-            SpawnLabel();
         }
 
-        private void SpawnLabel()
+        private Label SpawnLabel(int inMoney)
         {
             Label moneyLabel = new Label
             {
-                Content = "+ $" + moneyAmount,
+                Content = "+ $" + inMoney,
                 FontSize = 25,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -40,12 +35,14 @@ namespace Cheese_Clicker.Animations
 
             moneyLabel.IsHitTestVisible = false;
 
-            PlayAnimation(moneyLabel);
+            return moneyLabel;
         }
-        private void PlayAnimation(Label inLabel)
+        public void PlayAnimation(int inMoney)
         {
+            Label moneyLabel = SpawnLabel(inMoney);
+
             TranslateTransform moveTransform = new TranslateTransform();
-            inLabel.RenderTransform = moveTransform;
+            moneyLabel.RenderTransform = moveTransform;
 
             PathGeometry path = new PathGeometry();
             PathFigure figure = new PathFigure();
@@ -79,9 +76,9 @@ namespace Cheese_Clicker.Animations
 
             animY.Completed += (sender, e) =>
             {
-                if (inLabel.Parent is Panel parentPanel)
+                if (moneyLabel.Parent is Panel parentPanel)
                 {
-                    parentPanel.Children.Remove(inLabel);
+                    parentPanel.Children.Remove(moneyLabel);
                 }
             };
 

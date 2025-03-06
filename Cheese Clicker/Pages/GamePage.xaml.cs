@@ -27,6 +27,10 @@ namespace Cheese_Clicker.Pages
     {
         private PlayerData player;
         private ModifierManager modifierManager;
+        private BounceElement bounceElement = new BounceElement();
+        private MoneyLabelEffect moneyLabelEffect;
+
+        private RandomMoneyGenerator generator = new RandomMoneyGenerator(1, 100);
         public GamePage(PlayerData player, ModifierManager manager)
         {
             InitializeComponent();
@@ -34,23 +38,22 @@ namespace Cheese_Clicker.Pages
             this.modifierManager = manager;
             UpdateUI(player.GetMoney());
             UpdateModList();
-
             this.Loaded += GamePage_Loaded; // Ensure updates when returning
+
+            moneyLabelEffect = new MoneyLabelEffect(this);
         }
 
         private void CheeseButton_Click(object sender, RoutedEventArgs e)
         {
-            BounceElement element = new(cheeseButton);
-
-            RandomMoneyGenerator generator = new RandomMoneyGenerator(1,100);
-
             int moneyGained = modifierManager.ApplyAllModifiers(generator.GetRandomMoney());
             player.AddMoney(moneyGained);
 
             player.IncrementClickCount();
             UpdateUI(moneyGained);
 
-            MoneyLabelEffect effect = new MoneyLabelEffect(this, cheeseButton, moneyGained);
+            bounceElement.PlayAnimation(cheeseButton);
+
+            moneyLabelEffect.PlayAnimation(moneyGained);
         }
 
         private void ShopButton_Click(object sender, RoutedEventArgs e)
