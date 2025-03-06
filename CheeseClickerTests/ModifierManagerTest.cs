@@ -15,7 +15,7 @@ namespace CheeseClickerTests
         public void Multiplier_Modifier()
         {
             // Arrange
-            int money = 100;
+            long money = 100;
             ModifierManager manager = new ModifierManager();
             manager.SetCriticalChance(0);
             Modifiers modifier = new MultiplierModifier();
@@ -23,7 +23,7 @@ namespace CheeseClickerTests
             // Act
             manager.AddModifier(modifier);
             manager.AddModifier(modifier);
-            int newMoneyValue = manager.ApplyAllModifiers(money);
+            long newMoneyValue = manager.ApplyAllModifiers(money);
 
             // Assert
             Assert.Equal(400, newMoneyValue);
@@ -33,7 +33,7 @@ namespace CheeseClickerTests
         public void Additive_Modifier()
         {
             // Arrange
-            int money = 100;
+            long money = 100;
             ModifierManager manager = new ModifierManager();
             manager.SetCriticalChance(0);
             Modifiers modifier = new AdditiveModifier();
@@ -43,7 +43,7 @@ namespace CheeseClickerTests
             manager.AddModifier(modifier);
             manager.AddModifier(modifier);
             manager.AddModifier(modifier);
-            int newMoneyValue = manager.ApplyAllModifiers(money);
+            long newMoneyValue = manager.ApplyAllModifiers(money);
 
             // Assert
             Assert.Equal(500, newMoneyValue);
@@ -53,7 +53,7 @@ namespace CheeseClickerTests
         public void Add_And_Multiply_Modifiers()
         {
             // Arrange
-            int money = 100;
+            long money = 100;
             ModifierManager manager = new ModifierManager();
             manager.SetCriticalChance(0);
             Modifiers addMod = new AdditiveModifier();
@@ -63,7 +63,7 @@ namespace CheeseClickerTests
             manager.AddModifier(addMod);
             manager.AddModifier(addMod);
             manager.AddModifier(multiplyMod);
-            int newMoneyValue = manager.ApplyAllModifiers(money);
+            long newMoneyValue = manager.ApplyAllModifiers(money);
 
             // Assert
             Assert.Equal(600, newMoneyValue);
@@ -74,7 +74,7 @@ namespace CheeseClickerTests
         public void Max_Normal_Critical_Chance_Modifier()
         {
             //Arrange
-            int money = 100;
+            long money = 100;
             ModifierManager manager = new ModifierManager();
             Modifiers criticalChanceMod = new CriticalChanceModifier();
             manager.SetCriticalChance(0); // reset the innate 10 percent to zero for easy testing
@@ -85,7 +85,7 @@ namespace CheeseClickerTests
             manager.AddModifier(criticalChanceMod);
             manager.AddModifier(criticalChanceMod);
             manager.AddModifier(criticalChanceMod);
-            int newMoneyValue = manager.ApplyAllModifiers(money);
+            long newMoneyValue = manager.ApplyAllModifiers(money);
 
             // Assert
             Assert.Equal(200, newMoneyValue);
@@ -95,13 +95,13 @@ namespace CheeseClickerTests
         public void Super_Critical_Chance_Modifier()
         {
             //Arrange
-            int money = 100;
+            long money = 100;
             ModifierManager manager = new ModifierManager();
             Modifiers criticalChanceMod = new CriticalChanceModifier();
             manager.SetCriticalChance(200); // 100 percent to super crit
 
             // Act
-            int newMoneyValue = manager.ApplyAllModifiers(money);
+            long newMoneyValue = manager.ApplyAllModifiers(money);
 
             //Assert
             Assert.Equal(400, newMoneyValue);
@@ -111,7 +111,7 @@ namespace CheeseClickerTests
         public void Critical_Multiplier()
         {
             //Arrange
-            int money = 100;
+            long money = 100;
             ModifierManager manager = new ModifierManager();
             Modifiers criticalMultiplyMod = new CriticalMultiplierModifier();
             manager.SetCriticalChance(100);
@@ -119,7 +119,7 @@ namespace CheeseClickerTests
             //Act
             manager.AddModifier(criticalMultiplyMod);
             manager.AddModifier(criticalMultiplyMod);
-            int newMoneyValue = manager.ApplyAllModifiers(money);
+            long newMoneyValue = manager.ApplyAllModifiers(money);
 
             //Assert
             Assert.Equal(600, newMoneyValue);
@@ -129,7 +129,7 @@ namespace CheeseClickerTests
         public void Super_Critical_Multiplier()
         {
             //Arrange
-            int money = 100;
+            long money = 100;
             ModifierManager manager = new ModifierManager();
             Modifiers criticalMultiplyMod = new CriticalMultiplierModifier();
             manager.SetCriticalChance(200);
@@ -137,7 +137,7 @@ namespace CheeseClickerTests
             //Act
             manager.AddModifier(criticalMultiplyMod);
             manager.AddModifier(criticalMultiplyMod);
-            int newMoneyValue = manager.ApplyAllModifiers(money);
+            long newMoneyValue = manager.ApplyAllModifiers(money);
 
             //Assert
             Assert.Equal(1200, newMoneyValue);
@@ -147,13 +147,13 @@ namespace CheeseClickerTests
         public void Crit_Chance_Beyond_300_Percent()
         {
             //Arrange
-            int money = 100;
+            long money = 100;
             ModifierManager manager = new ModifierManager();
             Modifiers criticalMultiplyMod = new CriticalMultiplierModifier();
             manager.SetCriticalChance(350);
 
             //Act
-            int newMoneyValue = manager.ApplyAllModifiers(money);
+            long newMoneyValue = manager.ApplyAllModifiers(money);
 
             //Assert
             Assert.Equal(600, newMoneyValue);

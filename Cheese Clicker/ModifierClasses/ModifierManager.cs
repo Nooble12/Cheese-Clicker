@@ -43,14 +43,14 @@ namespace Cheese_Clicker.ModifierClasses
             }
         }
 
-        public int ApplyAllModifiers(int moneyAmount)
+        public long ApplyAllModifiers(long moneyAmount)
         {
-            int finalMoneyGained = CalculateCritReward(moneyAmount + totalAdditiveValue) * totalMultiplyValue;
+            long finalMoneyGained = CalculateCritReward(moneyAmount + totalAdditiveValue) * totalMultiplyValue;
 
             return finalMoneyGained;
         }
 
-        private int CalculateCritReward(int moneyAmount)
+        private long CalculateCritReward(long moneyAmount)
         {
             bool superCritEnabled = totalCritChance > 100;
             int critChance = Math.Min(totalCritChance, 100);

@@ -45,7 +45,7 @@ namespace Cheese_Clicker.Pages
 
         private void CheeseButton_Click(object sender, RoutedEventArgs e)
         {
-            int moneyGained = modifierManager.ApplyAllModifiers(generator.GetRandomMoney());
+            long moneyGained = modifierManager.ApplyAllModifiers(generator.GetRandomMoney());
             player.AddMoney(moneyGained);
 
             player.IncrementClickCount();
@@ -62,7 +62,7 @@ namespace Cheese_Clicker.Pages
             NavigationService.Navigate(new ShopMenu(player));
         }
 
-        private void UpdateUI(int moneyGained)
+        private void UpdateUI(long moneyGained)
         {
             cheeseButton.Content = ("$" + moneyGained);
             MoneyLabel.Content = ("Money: $" + player.GetMoney());

@@ -18,12 +18,15 @@ namespace Cheese_Clicker;
 /// Interaction logic for MainWindow.xaml
 /// </summary>
 public partial class GameWindow : Window
-{
-    private PlayerData player = new PlayerData(1000);
-    private ModifierManager modifiers = new ModifierManager();
-    public GameWindow()
+{    public GameWindow()
     {
-        InitializeComponent();
+
+        long startingMoney = 1000; // will be changed to read from a file and set this money
+        int clickCount = 0;
+        PlayerData player = new PlayerData(startingMoney, clickCount);
+        ModifierManager modifiers = new ModifierManager();
+
+    InitializeComponent();
         MainFrame.Visibility = Visibility.Visible;
         MainFrame.Navigate(new GamePage(player, modifiers));
     }

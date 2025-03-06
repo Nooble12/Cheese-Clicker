@@ -10,13 +10,14 @@ namespace Cheese_Clicker
 {
     public class PlayerData
     {
-        private int money = 0;
+        private long money = 0;
         private int clickCount = 0;
         private string playerName = "N/A";
 
-        public PlayerData(int inMoney)
+        public PlayerData(long inMoney, int inClickCount)
         {
             money = inMoney;
+            clickCount = inClickCount;
         }
 
         public void IncrementClickCount()
@@ -29,17 +30,17 @@ namespace Cheese_Clicker
             return clickCount;
         }
 
-        public void AddMoney(int amount)
+        public void AddMoney(long amount)
         {
             money += amount;
         }
 
-        public void RemoveMoney(int amount)
+        public void RemoveMoney(long amount)
         {
             money -= amount;
         }
 
-        public int GetMoney()
+        public long GetMoney()
         {
             return money;
         }

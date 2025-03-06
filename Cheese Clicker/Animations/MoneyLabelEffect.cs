@@ -21,7 +21,7 @@ namespace Cheese_Clicker.Animations
             currentPage = inPage;
         }
 
-        private Label SpawnLabel(int inMoney)
+        private Label SpawnLabel(long inMoney)
         {
             Label moneyLabel = new Label
             {
@@ -37,7 +37,7 @@ namespace Cheese_Clicker.Animations
 
             return moneyLabel;
         }
-        public void PlayAnimation(int inMoney)
+        public void PlayAnimation(long inMoney)
         {
             Label moneyLabel = SpawnLabel(inMoney);
 
