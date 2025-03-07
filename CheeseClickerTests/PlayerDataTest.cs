@@ -19,7 +19,7 @@ namespace CheeseClickerTests
             long moneyToBeAdded = 100;
             player.AddMoney(moneyToBeAdded);
 
-            Assert.Equal(200, player.GetMoney());
+            Assert.Equal(200, player.money);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace CheeseClickerTests
             long moneyToBeRemoved = 100;
             player.RemoveMoney(moneyToBeRemoved);
 
-            Assert.Equal(0, player.GetMoney());
+            Assert.Equal(0, player.money);
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace CheeseClickerTests
 
             player.IncrementClickCount();
 
-            Assert.Equal(1, player.GetClickCount());
+            Assert.Equal(1, player.clickCount);
         }
 
     }

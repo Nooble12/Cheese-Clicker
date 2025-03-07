@@ -5,14 +5,29 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.Serialization;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace Cheese_Clicker
 {
+    [XmlRoot("PlayerData")]
     public class PlayerData
     {
-        private long money = 0;
-        private int clickCount = 0;
-        private string playerName = "N/A";
+        [XmlElement("PlayerMoney")]
+        public long money { get; set; } = 0L;
+
+        [XmlElement("clickCount")]
+        public int clickCount { get; set; } = 0;
+
+        [XmlElement("profileName")]
+        public string profileName { get; set; } = "LocalProfile";
+
+        public PlayerData()
+        {
+            profileName = "GameSave";
+            clickCount = 0;
+            money = 1000;
+        }
 
         public PlayerData(long inMoney, int inClickCount)
         {
@@ -25,11 +40,6 @@ namespace Cheese_Clicker
             clickCount += 1;
         }
 
-        public int GetClickCount()
-        {
-            return clickCount;
-        }
-
         public void AddMoney(long amount)
         {
             money += amount;
@@ -38,11 +48,6 @@ namespace Cheese_Clicker
         public void RemoveMoney(long amount)
         {
             money -= amount;
-        }
-
-        public long GetMoney()
-        {
-            return money;
         }
     }
 }

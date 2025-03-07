@@ -1,0 +1,21 @@
+﻿<Page x:Class="Cheese_Clicker.DataSaving.SelectProfileWindow"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Load File" Height="300" Width="400"
+      Name="ProfilePage">
+    <Grid>
+        <ListBox x:Name="FileListBox" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20"/>
+
+        <Button Content="Load Selected File" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"
+                Width="150" Click="LoadFileButton_Click"/>
+        <TextBox
+            Name="SearchBox"
+            TextChanged="searchBox_Changed"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Margin="0,0,0,0"
+            Text="Search Here"
+            Width="200"
+            />
+    </Grid>
+</Page>

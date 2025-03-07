@@ -37,7 +37,7 @@ namespace Cheese_Clicker
 
         private void setUIElements()
         {
-            balanceLabel.Content = "Balance: $" + player.GetMoney();
+            balanceLabel.Content = "Balance: $" + player.money;
         }
     }
 }

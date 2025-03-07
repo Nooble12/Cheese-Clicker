@@ -36,7 +36,7 @@ namespace Cheese_Clicker.Pages
             InitializeComponent();
             this.player = player;
             this.modifierManager = manager;
-            UpdateUI(player.GetMoney());
+            UpdateUI(player.money);
             UpdateModList();
             this.Loaded += GamePage_Loaded; // Ensure updates when returning
 
@@ -65,8 +65,8 @@ namespace Cheese_Clicker.Pages
         private void UpdateUI(long moneyGained)
         {
             cheeseButton.Content = ("$" + moneyGained);
-            MoneyLabel.Content = ("Money: $" + player.GetMoney());
-            ClickCountLabel.Content = ("Clicks: " + player.GetClickCount());
+            MoneyLabel.Content = ("Money: $" + player.money);
+            ClickCountLabel.Content = ("Clicks: " + player.clickCount);
         }
         private void UpdateModList()
         {

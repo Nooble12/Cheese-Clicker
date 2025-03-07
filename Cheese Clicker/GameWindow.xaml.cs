@@ -1,4 +1,5 @@
-﻿using Cheese_Clicker.ModifierClasses;
+﻿using Cheese_Clicker.DataSaving;
+using Cheese_Clicker.ModifierClasses;
 using Cheese_Clicker.Pages;
 using System.Text;
 using System.Windows;
@@ -18,17 +19,12 @@ namespace Cheese_Clicker;
 /// Interaction logic for MainWindow.xaml
 /// </summary>
 public partial class GameWindow : Window
-{    public GameWindow()
+{   
+    public GameWindow(PlayerData player, ModifierManager modifiers)
     {
-
-        long startingMoney = 1000; // will be changed to read from a file and set this money
-        int clickCount = 0;
-        PlayerData player = new PlayerData(startingMoney, clickCount);
-        ModifierManager modifiers = new ModifierManager();
-
-    InitializeComponent();
+        InitializeComponent();
         MainFrame.Visibility = Visibility.Visible;
         MainFrame.Navigate(new GamePage(player, modifiers));
     }
-   
+
 }
