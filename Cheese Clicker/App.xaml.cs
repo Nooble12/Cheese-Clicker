@@ -1,5 +1,6 @@
 ﻿using Cheese_Clicker.DataSaving;
 using Cheese_Clicker.ModifierClasses;
+using Cheese_Clicker.Player;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
@@ -16,17 +17,13 @@ public partial class App : Application
 {
     private long startingMoney = 1000L;
     private int clickCount = 0;
-    private PlayerData player;
-    private ModifierManager modifiers = new ModifierManager();
+
+    private GameState gameState;
     protected override void OnExit(ExitEventArgs e)
     {
         Debug.WriteLine("Game Closing");
-
-        string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        string saveFolderPath = Path.Combine(projectDirectory, "SaveFiles");
-
         PlayerDataSaver dataSaver = new();
-        dataSaver.SavePlayerData(player, saveFolderPath, "GameSave");
+        dataSaver.SavePlayerData(gameState, "GameSave");
         Debug.WriteLine(dataSaver.GetSavePath());
         base.OnExit(e);
     }
@@ -54,19 +51,20 @@ public partial class App : Application
     {
         if (hasProfileInFile())
         {
-            string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string saveFolder = Path.Combine(projectDirectory, "SaveFiles");
-
-            string filePath = Path.Combine(saveFolder, "GameSave" + ".xml");
             PlayerDataLoader dataLoader = new PlayerDataLoader();
-            player = dataLoader.LoadPlayerData(filePath);
+
+            gameState = dataLoader.LoadPlayerGameState("GameSave.xml");
+            //gameState.modifierManager.ReCalculateAllStats();
         }
         else
         {
-            player = new PlayerData(startingMoney, clickCount);
+            PlayerData player = new PlayerData(startingMoney, clickCount);
+            ModifierManager modifiers = new ModifierManager();
+
+            gameState = new GameState(player, modifiers);
         }
 
-        LauncherWindow launcher = new LauncherWindow(player, modifiers);
+        LauncherWindow launcher = new LauncherWindow(gameState);
         launcher.Show();
     }
        

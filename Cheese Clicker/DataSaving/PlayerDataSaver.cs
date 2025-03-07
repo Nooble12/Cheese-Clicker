@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cheese_Clicker.Player;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -12,8 +13,12 @@ namespace Cheese_Clicker.DataSaving
 {
     public class PlayerDataSaver
     {
-        public void SavePlayerData(PlayerData inPlayerData, string saveFolderPath, string fileName)
+        public void SavePlayerData(GameState gameState, string fileName)
         {
+
+            string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string saveFolderPath = Path.Combine(projectDirectory, "SaveFiles");
+
             if (!Directory.Exists(saveFolderPath))
             {
                 Directory.CreateDirectory(saveFolderPath);
@@ -22,10 +27,10 @@ namespace Cheese_Clicker.DataSaving
 
             string filePath = Path.Combine(saveFolderPath, fileName + ".xml");
 
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(PlayerData));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(GameState));
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
             {
-                xmlSerializer.Serialize(fileStream, inPlayerData);
+                xmlSerializer.Serialize(fileStream, gameState);
             }
         }
 

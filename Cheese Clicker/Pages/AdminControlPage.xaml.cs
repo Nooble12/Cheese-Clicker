@@ -1,4 +1,5 @@
 ﻿using Cheese_Clicker.ModifierClasses;
+using Cheese_Clicker.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,37 +22,37 @@ namespace Cheese_Clicker.Pages
     /// </summary>
     public partial class AdminControlPage : Page
     {
-        private ModifierManager modifierManager;
-        public AdminControlPage(ModifierManager inManager)
+        private GameState gameState;
+        public AdminControlPage(GameState inGameState)
         {
             InitializeComponent();
-            modifierManager = inManager;
+            gameState = inGameState;
         }
 
         private void GiveMultiplyMod_Click(object sender, RoutedEventArgs e)
         {
             Modifiers multiplyMod = new MultiplierModifier();
-            modifierManager.AddModifier(multiplyMod);
+            gameState.modifierManager.AddModifier(multiplyMod);
         }
 
         private void GiveAddMod_Click(object sender, RoutedEventArgs e)
         {
             Modifiers modAdd = new AdditiveModifier();
-            modifierManager.AddModifier(modAdd);
+            gameState.modifierManager.AddModifier(modAdd);
         }
         private void GiveCritChance_Click(object sender, RoutedEventArgs e)
         {
             Modifiers modAdd = new CriticalChanceModifier();
-            modifierManager.AddModifier(modAdd);
+            gameState.modifierManager.AddModifier(modAdd);
         }
         private void GiveCritMultiply_Click(object sender, RoutedEventArgs e)
         {
             Modifiers modAdd = new CriticalMultiplierModifier();
-            modifierManager.AddModifier(modAdd);
+            gameState.modifierManager.AddModifier(modAdd);
         }
         private void ClearAllMods_Click(object sender, RoutedEventArgs e)
         {
-            modifierManager.ClearAllModifiers();
+            gameState.modifierManager.ClearAllModifiers();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

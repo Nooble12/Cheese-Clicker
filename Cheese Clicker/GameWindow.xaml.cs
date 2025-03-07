@@ -1,6 +1,7 @@
 ﻿using Cheese_Clicker.DataSaving;
 using Cheese_Clicker.ModifierClasses;
 using Cheese_Clicker.Pages;
+using Cheese_Clicker.Player;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,11 +21,11 @@ namespace Cheese_Clicker;
 /// </summary>
 public partial class GameWindow : Window
 {   
-    public GameWindow(PlayerData player, ModifierManager modifiers)
+    public GameWindow(GameState inGameState)
     {
         InitializeComponent();
         MainFrame.Visibility = Visibility.Visible;
-        MainFrame.Navigate(new GamePage(player, modifiers));
+        MainFrame.Navigate(new GamePage(inGameState));
     }
 
 }

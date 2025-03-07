@@ -1,5 +1,7 @@
 ﻿using Cheese_Clicker;
 using Cheese_Clicker.DataSaving;
+using Cheese_Clicker.ModifierClasses;
+using Cheese_Clicker.Player;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,29 +15,63 @@ namespace CheeseClickerTests
     {
 
         [Fact]
-        public void Saving_And_Loading()
+        public void Saving_And_Loading_PlayerData()
         {
             long money = 200;
             int clicks = 10;
             PlayerData player = new PlayerData(money, 10);
-
-            string saveFileName = "TestFile";
-
-            string testSaveFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestSaveFolder");
-
-            Debug.WriteLine(testSaveFolderPath);
+            ModifierManager manager = new ModifierManager();
+            GameState gameState = new GameState(player, manager);
 
             PlayerDataSaver dataSaver = new();
-            dataSaver.SavePlayerData(player, testSaveFolderPath, saveFileName);
+            dataSaver.SavePlayerData(gameState, "TestFile");
 
             PlayerDataLoader dataLoader = new PlayerDataLoader();
-            string filePath = Path.Combine(testSaveFolderPath, saveFileName + ".xml");
+         
+            GameState testState = new GameState();
+            testState = dataLoader.LoadPlayerGameState("TestFile.xml");
 
-            PlayerData newPlayer = new PlayerData(0, 0);
-            newPlayer = dataLoader.LoadPlayerData(filePath);
+            Assert.Equal(200, testState.playerData.money);
+            Assert.Equal(10, testState.playerData.clickCount);
+        }
 
-            Assert.Equal(200, newPlayer.money);
-            Assert.Equal(10, newPlayer.clickCount);
+        [Fact]
+        public void Saving_And_Loading_ModifierManager()
+        {
+            PlayerData player = new PlayerData();
+            ModifierManager manager = new ModifierManager();
+            GameState gameState = new GameState(player, manager);
+
+            //Add mods
+            Modifiers addMod = new AdditiveModifier();
+            Modifiers multiplyMod = new MultiplierModifier();
+            Modifiers criticalChanceMod = new CriticalChanceModifier();
+            Modifiers criticalMultiplyMod = new CriticalMultiplierModifier();
+            gameState.modifierManager.AddModifier(addMod);
+            gameState.modifierManager.AddModifier(multiplyMod);
+            gameState.modifierManager.AddModifier(criticalChanceMod);
+            gameState.modifierManager.AddModifier(criticalMultiplyMod);
+
+            PlayerDataSaver dataSaver = new();
+            dataSaver.SavePlayerData(gameState, "TestModifiersFile");
+
+            PlayerDataLoader dataLoader = new PlayerDataLoader();
+            GameState testState = new GameState();
+            testState = dataLoader.LoadPlayerGameState("TestModifiersFile.xml");
+
+            ModifierManager testManager = new ModifierManager();
+            testManager.AddModifier(addMod);
+            testManager.AddModifier(multiplyMod);
+            testManager.AddModifier(criticalChanceMod);
+            testManager.AddModifier(criticalMultiplyMod);
+
+            List<Modifiers> actualList = testState.modifierManager.GetModifierList();
+            List <Modifiers> expectedList = testManager.GetModifierList();
+
+            String expectedMod = expectedList[2].ToString().Trim();
+            String actualMod = actualList[2].ToString().Trim();
+
+            Assert.Equal(expectedMod, actualMod);
         }
     }
 }

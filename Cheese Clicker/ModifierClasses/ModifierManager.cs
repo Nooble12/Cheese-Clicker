@@ -5,12 +5,15 @@ using System.Printing.IndexedProperties;
 using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Cheese_Clicker.ModifierClasses
 {
+    [XmlRoot("ModifierManager")]
     public class ModifierManager
     {
-        private List<Modifiers> modifierList = new List<Modifiers>();
+        [XmlElement("ModifierList")]
+        public List<Modifiers> modifierList = new List<Modifiers>();
 
         private Random generator = new Random();
 
@@ -23,6 +26,11 @@ namespace Cheese_Clicker.ModifierClasses
         {
             modifierList.Add(inModifier);
 
+            CalculateStats(inModifier);
+        }
+
+        private void CalculateStats(Modifiers inModifier)
+        {
             switch (inModifier)
             {
                 case AdditiveModifier additiveMod:
@@ -40,6 +48,19 @@ namespace Cheese_Clicker.ModifierClasses
                 case CriticalMultiplierModifier critMultiplierMod:
                     totalCritMultiplier += inModifier.GetModifierValue();
                     break;
+            }
+        }
+
+        //Only runs on game start up
+        public void ReCalculateAllStats()
+        {
+            foreach (var modifier in modifierList)
+            {
+                int totalAdditiveValue = 0;
+                int totalMultiplyValue = 1;
+                int totalCritChance = 10; //percent
+                int totalCritMultiplier = 2;
+                CalculateStats(modifier);
             }
         }
 
@@ -104,7 +125,7 @@ namespace Cheese_Clicker.ModifierClasses
             totalCritMultiplier = 2;
         }
 
-        public string GetModifierList()
+        public string GetModifierListAsString()
         {
             StringBuilder builder = new StringBuilder();
             foreach (var mod in modifierList)
@@ -112,6 +133,11 @@ namespace Cheese_Clicker.ModifierClasses
                 builder.Append(mod);
             }
             return builder.ToString();
+        }
+
+        public List<Modifiers> GetModifierList()
+        {
+            return modifierList;
         }
 
     }

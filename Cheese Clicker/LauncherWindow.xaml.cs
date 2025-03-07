@@ -1,4 +1,5 @@
 ﻿using Cheese_Clicker.ModifierClasses;
+using Cheese_Clicker.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,18 +24,16 @@ namespace Cheese_Clicker
     /// </summary>
     public partial class LauncherWindow : Window
     {
-        private PlayerData player;
-        private ModifierManager manager;
-        public LauncherWindow(PlayerData inData, ModifierManager inManager)
+        private GameState playerGameState;
+        public LauncherWindow(GameState inPlayerGameState)
         {
             InitializeComponent();
-            player = inData;
-            manager = inManager;
+            playerGameState = inPlayerGameState;
         }
         //
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            GameWindow window = new GameWindow(player, manager);
+            GameWindow window = new GameWindow(playerGameState);
             window.Visibility = Visibility.Visible;
             this.Close();
         }
