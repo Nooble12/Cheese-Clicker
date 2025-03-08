@@ -1,4 +1,5 @@
 ﻿using Cheese_Clicker.ModifierClasses;
+using Cheese_Clicker.Pages;
 using Cheese_Clicker.Player;
 using System;
 using System.Collections.Generic;
@@ -24,33 +25,11 @@ namespace Cheese_Clicker
     /// </summary>
     public partial class LauncherWindow : Window
     {
-        private GameState playerGameState;
         public LauncherWindow(GameState inPlayerGameState)
         {
             InitializeComponent();
-            playerGameState = inPlayerGameState;
-        }
-        //
-        private void PlayButton_Click(object sender, RoutedEventArgs e)
-        {
-            GameWindow window = new GameWindow(playerGameState);
-            window.Visibility = Visibility.Visible;
-            this.Close();
+            LauncherWin.Visibility = Visibility.Visible;
+            LauncherWin.Navigate(new LauncherPage(inPlayerGameState, this));
         }
     }
 }
-
-/**
- *  public bool hasProfileInFile()
-    {
-        string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        string saveFolder = Path.Combine(projectDirectory, "SaveFiles");
-        if (!Directory.Exists(saveFolder))
-        {
-            return false;
-        }
-
-        string[] files = Directory.GetFiles(saveFolder);
-        return files.Length > 0;
-    }
-*/

@@ -10,7 +10,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resources\PatchNotes.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="resources\PatchNotes.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="SaveFiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Utilities\ReadTextFile.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
 </Project>
