@@ -12,16 +12,19 @@ namespace Cheese_Clicker.Player
     {
         public PlayerData playerData { get; set; }
         public ModifierManager modifierManager { get; set; }
-        public GameState(PlayerData inPlayer, ModifierManager inModifiers)
+        public Inventory playerInventory { get; set; }
+        public GameState(PlayerData inPlayer, ModifierManager inModifiers, Inventory inInventory)
         {
             playerData = inPlayer;
             modifierManager = inModifiers;
+            playerInventory = inInventory;
         }
 
         public GameState()
         {
             playerData = new PlayerData();
             modifierManager = new ModifierManager();
+            playerInventory = new Inventory();
         }
     }
 }

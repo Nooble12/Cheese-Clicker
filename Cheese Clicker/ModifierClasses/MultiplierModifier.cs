@@ -12,7 +12,6 @@ namespace Cheese_Clicker.ModifierClasses
         private int multiplierValue = 2; // 2 times
         private int duration = 10; // clicks
 
-
         public override int GetModifierValue()
         {
             return multiplierValue;

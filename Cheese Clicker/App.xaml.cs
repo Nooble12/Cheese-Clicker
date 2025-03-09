@@ -60,8 +60,9 @@ public partial class App : Application
         {
             PlayerData player = new PlayerData(startingMoney, clickCount);
             ModifierManager modifiers = new ModifierManager();
+            Inventory playerInventory = new Inventory();
 
-            gameState = new GameState(player, modifiers);
+            gameState = new GameState(player, modifiers, playerInventory);
         }
 
         LauncherWindow launcher = new LauncherWindow(gameState);

@@ -1,7 +1,9 @@
-﻿using Cheese_Clicker.ModifierClasses;
+﻿using Cheese_Clicker.Items;
+using Cheese_Clicker.ModifierClasses;
 using Cheese_Clicker.Player;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +29,7 @@ namespace Cheese_Clicker.Pages
         {
             InitializeComponent();
             gameState = inGameState;
+            UpdateUI();
         }
 
         private void GiveMultiplyMod_Click(object sender, RoutedEventArgs e)
@@ -58,6 +61,39 @@ namespace Cheese_Clicker.Pages
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void GiveCheeseItem_Click(object sender, RoutedEventArgs e)
+        {
+            Item cheese = new CheeseItem();
+            gameState.playerInventory.AddItem(cheese, 1);
+            UpdateUI();
+        }
+
+        private void RemoveCheeseItem_Click(object sender, RoutedEventArgs e)
+        {
+            Item cheese = new CheeseItem();
+            gameState.playerInventory.RemoveItem(cheese, 1);
+            UpdateUI();
+        }
+
+        private void GiveComputerItem_Click(object sender, RoutedEventArgs e)
+        {
+            Item computer = new ComputerItem();
+            gameState.playerInventory.AddItem(computer, 1);
+            UpdateUI();
+        }
+
+        private void RemoveComputerItem_Click(object sender, RoutedEventArgs e)
+        {
+            Item computer = new ComputerItem();
+            gameState.playerInventory.RemoveItem(computer, 1);
+            UpdateUI();
+        }
+
+        private void UpdateUI()
+        {
+            InventoryLabel.Content = gameState.playerInventory.GetAllItemsAsString();
         }
     }
 }

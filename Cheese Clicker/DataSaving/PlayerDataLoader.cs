@@ -23,6 +23,7 @@ namespace Cheese_Clicker.DataSaving
             using (FileStream fileStream = new FileStream(saveFilePath, FileMode.Open))
             {
                 gameState = (GameState)xmlSerializer.Deserialize(fileStream);
+                gameState.playerInventory.PrepareAfterDeserialization();
             }
             gameState.modifierManager.ReCalculateAllStats();
             return gameState;

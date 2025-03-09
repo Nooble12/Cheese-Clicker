@@ -16,6 +16,16 @@
             <Button Name ="AddCritMultiplierMod" Content="+ 2 Crit Multiplier" Click="GiveCritMultiply_Click"></Button>
             <Button Name ="ClearMods" Content="Clear All Modifiers" Click="ClearAllMods_Click"></Button>
         </StackPanel>
+
+        <StackPanel Margin="248,268,248,80">
+            <Button Name="GiveCheeseItem" Content="+ 1 Cheese Item" Click="GiveCheeseItem_Click"></Button>
+            <Button Name="RemoveCheeseItem" Content="- 1 Cheese Item" Click="RemoveCheeseItem_Click"></Button>
+            <Button Name="GiveComputerItem" Content="+ 1 Computer Item" Click="GiveComputerItem_Click"></Button>
+            <Button Name="RemoveComputerItem" Content="- 1 Computer Item" Click="RemoveComputerItem_Click"></Button>
+        </StackPanel>
+        <Label Name="InventoryLabel" Content="Inventory: " Margin="10,150,566,154">
+            
+        </Label>
         
         <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Back" Margin="10,0,0,10" Click="BackButton_Click" Width="97" Height="45"></Button>
     </Grid>

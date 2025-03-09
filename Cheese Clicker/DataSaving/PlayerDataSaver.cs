@@ -30,6 +30,7 @@ namespace Cheese_Clicker.DataSaving
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(GameState));
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
             {
+                gameState.playerInventory.PrepareForSerialization();
                 xmlSerializer.Serialize(fileStream, gameState);
             }
         }
