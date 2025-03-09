@@ -25,7 +25,7 @@ namespace Cheese_Clicker.Animations
         {
             Label moneyLabel = new Label
             {
-                Content = "+ $" + inMoney,
+                Content = $"+ ${inMoney:N0}",
                 FontSize = 25,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,

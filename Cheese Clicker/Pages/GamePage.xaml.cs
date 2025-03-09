@@ -64,9 +64,9 @@ namespace Cheese_Clicker.Pages
 
         private void UpdateUI(long moneyGained)
         {
-            cheeseButton.Content = ("$" + moneyGained);
-            MoneyLabel.Content = ("Money: $" + gameState.playerData.money);
-            ClickCountLabel.Content = ("Clicks: " + gameState.playerData.clickCount);
+            cheeseButton.Content = $"${moneyGained:N0}";
+            MoneyLabel.Content = $"Money: ${gameState.playerData.money:N0}";
+            ClickCountLabel.Content = $"Clicks: {gameState.playerData.clickCount:N0}";
         }
         private void UpdateModList()
         {
