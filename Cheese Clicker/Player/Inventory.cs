@@ -97,5 +97,9 @@ namespace Cheese_Clicker.Player
             playerInventory.Clear();
         }
 
+        public List<InventoryEntry> GetInventoryEntriesList()
+        {
+            return InventoryEntries;
+        }
     }
 }
