@@ -1,4 +1,5 @@
-﻿using Cheese_Clicker.ModifierClasses;
+﻿using Cheese_Clicker.Generators;
+using Cheese_Clicker.ModifierClasses;
 
 namespace CheeseClickerTests
 {
@@ -16,7 +17,8 @@ namespace CheeseClickerTests
             // Act
             manager.AddModifier(modifier);
             manager.AddModifier(modifier);
-            long newMoneyValue = manager.ApplyAllModifiers(money);
+            Reward reward = manager.ApplyAllModifiers(money);
+            long newMoneyValue = reward.moneyGained;
 
             // Assert
             Assert.Equal(400, newMoneyValue);
@@ -36,7 +38,8 @@ namespace CheeseClickerTests
             manager.AddModifier(modifier);
             manager.AddModifier(modifier);
             manager.AddModifier(modifier);
-            long newMoneyValue = manager.ApplyAllModifiers(money);
+            Reward reward = manager.ApplyAllModifiers(money);
+            long newMoneyValue = reward.moneyGained;
 
             // Assert
             Assert.Equal(500, newMoneyValue);
@@ -56,7 +59,8 @@ namespace CheeseClickerTests
             manager.AddModifier(addMod);
             manager.AddModifier(addMod);
             manager.AddModifier(multiplyMod);
-            long newMoneyValue = manager.ApplyAllModifiers(money);
+            Reward reward = manager.ApplyAllModifiers(money);
+            long newMoneyValue = reward.moneyGained;
 
             // Assert
             Assert.Equal(600, newMoneyValue);
@@ -78,10 +82,14 @@ namespace CheeseClickerTests
             manager.AddModifier(criticalChanceMod);
             manager.AddModifier(criticalChanceMod);
             manager.AddModifier(criticalChanceMod);
-            long newMoneyValue = manager.ApplyAllModifiers(money);
+            Reward reward = manager.ApplyAllModifiers(money);
+            long newMoneyValue = reward.moneyGained;
+            CriticalType actualCritType = reward.criticalType;
 
+            CriticalType expectedCritType = CriticalType.Critical;
             // Assert
             Assert.Equal(200, newMoneyValue);
+            Assert.Equal(expectedCritType, actualCritType);
         }
 
         [Fact]
@@ -94,10 +102,15 @@ namespace CheeseClickerTests
             manager.SetCriticalChance(200); // 100 percent to super crit
 
             // Act
-            long newMoneyValue = manager.ApplyAllModifiers(money);
+            Reward reward = manager.ApplyAllModifiers(money);
+            long newMoneyValue = reward.moneyGained;
+            CriticalType actualCritType = reward.criticalType;
+
+            CriticalType expectedCritType = CriticalType.SuperCritical;
 
             //Assert
             Assert.Equal(400, newMoneyValue);
+            Assert.Equal(expectedCritType, actualCritType);
         }
 
         [Fact]
@@ -112,7 +125,8 @@ namespace CheeseClickerTests
             //Act
             manager.AddModifier(criticalMultiplyMod);
             manager.AddModifier(criticalMultiplyMod);
-            long newMoneyValue = manager.ApplyAllModifiers(money);
+            Reward reward = manager.ApplyAllModifiers(money);
+            long newMoneyValue = reward.moneyGained;
 
             //Assert
             Assert.Equal(600, newMoneyValue);
@@ -130,7 +144,8 @@ namespace CheeseClickerTests
             //Act
             manager.AddModifier(criticalMultiplyMod);
             manager.AddModifier(criticalMultiplyMod);
-            long newMoneyValue = manager.ApplyAllModifiers(money);
+            Reward reward = manager.ApplyAllModifiers(money);
+            long newMoneyValue = reward.moneyGained;
 
             //Assert
             Assert.Equal(1200, newMoneyValue);
@@ -146,7 +161,8 @@ namespace CheeseClickerTests
             manager.SetCriticalChance(350);
 
             //Act
-            long newMoneyValue = manager.ApplyAllModifiers(money);
+            Reward reward = manager.ApplyAllModifiers(money);
+            long newMoneyValue = reward.moneyGained;
 
             //Assert
             Assert.Equal(600, newMoneyValue);

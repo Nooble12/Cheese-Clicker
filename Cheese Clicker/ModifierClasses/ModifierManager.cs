@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using Cheese_Clicker.Generators;
+using System.Printing;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace Cheese_Clicker.ModifierClasses
@@ -58,11 +60,15 @@ namespace Cheese_Clicker.ModifierClasses
             }
         }
 
-        public long ApplyAllModifiers(long moneyAmount)
+        CriticalType critType = CriticalType.Normal;
+
+        public Reward ApplyAllModifiers(long moneyAmount)
         {
             long finalMoneyGained = CalculateCritReward(moneyAmount + totalAdditiveValue) * totalMultiplyValue;
 
-            return finalMoneyGained;
+            Reward rewardObject = new Reward(finalMoneyGained, critType);
+
+            return rewardObject;
         }
 
         private long CalculateCritReward(long moneyAmount)
@@ -70,9 +76,13 @@ namespace Cheese_Clicker.ModifierClasses
             bool superCritEnabled = totalCritChance > 100;
             int critChance = Math.Min(totalCritChance, 100);
 
+            critType = CriticalType.Normal;
+
             if (totalCritChance > 300)
             {
                 int criticalLevel = totalCritChance / 100; // integer divde to always round down
+
+                critType = CriticalType.SuperCritical;
 
                 return (moneyAmount * (criticalLevel + (1 + totalCritMultiplier)));
             }
@@ -84,10 +94,12 @@ namespace Cheese_Clicker.ModifierClasses
 
                 if (superCritRoll <= superCritChance)
                 {
+                    critType = CriticalType.SuperCritical;
                     return (moneyAmount * totalCritMultiplier) * 2;
                 }
                 else
                 {
+                    critType = CriticalType.Critical;
                     return (moneyAmount * totalCritMultiplier);
                 }
             }
@@ -96,6 +108,7 @@ namespace Cheese_Clicker.ModifierClasses
 
             if (normalCritRoll <= critChance)
             {
+                critType = CriticalType.Critical;
                 return (moneyAmount * totalCritMultiplier);
             }
 

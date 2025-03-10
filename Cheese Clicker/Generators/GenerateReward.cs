@@ -28,11 +28,11 @@ namespace Cheese_Clicker.Generators
             }
         }
 
-        public long GetReward()
+        public Reward GetReward()
         {
             CheckForItemReward();
-            long finalMoneyGenerated = player.modifierManager.ApplyAllModifiers(randomMoneyGenerator.GetRandomMoney());
-            return finalMoneyGenerated;
+            Reward reward = player.modifierManager.ApplyAllModifiers(randomMoneyGenerator.GetRandomMoney());
+            return reward;
         }
     }
 }

@@ -11,7 +11,8 @@ namespace CheeseClickerTests
             Player gameState = new Player();
             GenerateReward reward = new GenerateReward(gameState);
 
-            long moneyGained = reward.GetReward();
+            Reward returnedReward = reward.GetReward();
+            long moneyGained = returnedReward.moneyGained;
 
             Assert.True(moneyGained > 0);
         }
@@ -24,7 +25,8 @@ namespace CheeseClickerTests
 
             reward.SetChanceToWin(100);
 
-            long moneyGained = reward.GetReward();
+            Reward returnedReward = reward.GetReward();
+            long moneyGained = returnedReward.moneyGained;
 
             Assert.True(gameState.inventory.GetInventorySize() >= 1);
         }

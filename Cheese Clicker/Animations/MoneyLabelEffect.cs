@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using Cheese_Clicker.Generators;
+using Cheese_Clicker.ModifierClasses;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -15,25 +17,41 @@ namespace Cheese_Clicker.Animations
             currentPage = inPage;
         }
 
-        private Label SpawnLabel(long inMoney)
+        private Label SpawnLabel(Reward inReward)
         {
             Label moneyLabel = new Label
             {
-                Content = $"+ ${inMoney:N0}",
+                Content = $"+ ${inReward.moneyGained:N0}",
                 FontSize = 25,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
-                Margin = new Thickness(50, 50, 0, 0)
+                Margin = new Thickness(50, 50, 0, 0),
             };
+
+            switch (inReward.criticalType)
+            {
+                case CriticalType.Normal:
+                    moneyLabel.Foreground = new SolidColorBrush(Colors.Black);
+                    break;
+
+                case CriticalType.Critical:
+                    moneyLabel.Foreground = new SolidColorBrush(Colors.Yellow);
+                    break;
+
+                case CriticalType.SuperCritical:
+                    moneyLabel.Foreground = new SolidColorBrush(Colors.Red);
+                    break;
+            }
+
             (currentPage.Content as Panel)?.Children.Add(moneyLabel);
 
             moneyLabel.IsHitTestVisible = false;
 
             return moneyLabel;
         }
-        public void PlayAnimation(long inMoney)
+        public void PlayAnimation(Reward inReward)
         {
-            Label moneyLabel = SpawnLabel(inMoney);
+            Label moneyLabel = SpawnLabel(inReward);
 
             TranslateTransform moveTransform = new TranslateTransform();
             moneyLabel.RenderTransform = moveTransform;
