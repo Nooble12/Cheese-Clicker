@@ -1,7 +1,7 @@
 ﻿using Cheese_Clicker.Animations;
 using Cheese_Clicker.Generators;
 using Cheese_Clicker.ModifierClasses;
-using Cheese_Clicker.Player;
+using Cheese_Clicker.PlayerClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,29 +26,29 @@ namespace Cheese_Clicker.Pages
     /// </summary>
     public partial class GamePage : Page
     {
-        private GameState gameState;
+        private Player player;
         private BounceElement bounceElement = new BounceElement();
         private MoneyLabelEffect moneyLabelEffect;
 
         private GenerateReward moneyGenerator;
-        public GamePage(GameState inPlayerGameState)
+        public GamePage(Player inPlayer)
         {
             InitializeComponent();
-            gameState = inPlayerGameState;
-            UpdateUI(gameState.playerData.money);
+            player = inPlayer;
+            UpdateUI(player.statistics.money);
             UpdateModList();
             this.Loaded += GamePage_Loaded; // Ensure updates when returning
 
-            moneyGenerator = new GenerateReward(gameState);
+            moneyGenerator = new GenerateReward(player);
             moneyLabelEffect = new MoneyLabelEffect(this);
         }
 
         private void CheeseButton_Click(object sender, RoutedEventArgs e)
         {
             long moneyGained = moneyGenerator.GetReward();
-            gameState.playerData.AddMoney(moneyGained);
+            player.statistics.AddMoney(moneyGained);
 
-            gameState.playerData.IncrementClickCount();
+            player.statistics.IncrementClickCount();
             UpdateUI(moneyGained);
 
             bounceElement.PlayAnimation(cheeseButton);
@@ -59,23 +59,23 @@ namespace Cheese_Clicker.Pages
         private void ShopButton_Click(object sender, RoutedEventArgs e)
         {
             //BounceElement element = new(shopButton);
-            NavigationService.Navigate(new ShopMenu(gameState.playerData));
+            NavigationService.Navigate(new ShopMenu(player));
         }
 
         private void UpdateUI(long moneyGained)
         {
             cheeseButton.Content = $"${moneyGained:N0}";
-            MoneyLabel.Content = $"Money: ${gameState.playerData.money:N0}";
-            ClickCountLabel.Content = $"Clicks: {gameState.playerData.clickCount:N0}";
+            MoneyLabel.Content = $"Money: ${player.statistics.money:N0}";
+            ClickCountLabel.Content = $"Clicks: {player.statistics.clickCount:N0}";
         }
         private void UpdateModList()
         {
-            ModifierLabel.Content = gameState.modifierManager.GetModifierListAsString();
+            ModifierLabel.Content = player.modifierManager.GetModifierListAsString();
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AdminControlPage(gameState));
+            NavigationService.Navigate(new AdminControlPage(player));
         }
         private void GamePage_Loaded(object sender, RoutedEventArgs e)
         {

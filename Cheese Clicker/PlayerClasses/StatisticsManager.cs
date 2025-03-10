@@ -8,10 +8,10 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using static System.Formats.Asn1.AsnWriter;
 
-namespace Cheese_Clicker
+namespace Cheese_Clicker.PlayerClasses
 {
     [XmlRoot("PlayerData")]
-    public class PlayerData
+    public class StatisitcsManager
     {
         [XmlElement("PlayerMoney")]
         public long money { get; set; } = 0L;
@@ -22,14 +22,14 @@ namespace Cheese_Clicker
         [XmlElement("profileName")]
         public string profileName { get; set; } = "LocalProfile";
 
-        public PlayerData()
+        public StatisitcsManager()
         {
             profileName = "GameSave";
             clickCount = 0;
             money = 1000;
         }
 
-        public PlayerData(long inMoney, int inClickCount)
+        public StatisitcsManager(long inMoney, int inClickCount)
         {
             money = inMoney;
             clickCount = inClickCount;

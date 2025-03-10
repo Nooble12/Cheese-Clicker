@@ -1,4 +1,4 @@
-﻿using Cheese_Clicker.Player;
+﻿using Cheese_Clicker.PlayerClasses;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,19 +11,19 @@ namespace Cheese_Clicker.DataSaving
 {
     public class PlayerDataLoader
     {
-        public GameState LoadPlayerGameState (string inFileName)
+        public Player LoadPlayerGameState (string inFileName)
         {
 
             string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string saveFolderPath = Path.Combine(projectDirectory, "SaveFiles");
             string saveFilePath = Path.Combine(saveFolderPath, inFileName);
 
-            GameState gameState;
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(GameState));
+            Player gameState;
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Player));
             using (FileStream fileStream = new FileStream(saveFilePath, FileMode.Open))
             {
-                gameState = (GameState)xmlSerializer.Deserialize(fileStream);
-                gameState.playerInventory.PrepareAfterDeserialization();
+                gameState = (Player)xmlSerializer.Deserialize(fileStream);
+                gameState.inventory.PrepareAfterDeserialization();
             }
             gameState.modifierManager.ReCalculateAllStats();
             return gameState;

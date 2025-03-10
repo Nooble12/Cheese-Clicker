@@ -1,12 +1,13 @@
 ﻿using Cheese_Clicker.DataSaving;
 using Cheese_Clicker.ModifierClasses;
-using Cheese_Clicker.Player;
+using Cheese_Clicker.PlayerClasses;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Numerics;
 using System.Windows;
+using Cheese_Clicker.PlayerClasses;
 
 namespace Cheese_Clicker;
 
@@ -18,12 +19,12 @@ public partial class App : Application
     private long startingMoney = 1000L;
     private int clickCount = 0;
 
-    private GameState gameState;
+    private Player player;
     protected override void OnExit(ExitEventArgs e)
     {
         Debug.WriteLine("Game Closing");
         PlayerDataSaver dataSaver = new();
-        dataSaver.SavePlayerData(gameState, "GameSave");
+        dataSaver.SavePlayerData(player, "GameSave");
         Debug.WriteLine(dataSaver.GetSavePath());
         base.OnExit(e);
     }
@@ -53,19 +54,19 @@ public partial class App : Application
         {
             PlayerDataLoader dataLoader = new PlayerDataLoader();
 
-            gameState = dataLoader.LoadPlayerGameState("GameSave.xml");
+            player = dataLoader.LoadPlayerGameState("GameSave.xml");
             //gameState.modifierManager.ReCalculateAllStats();
         }
         else
         {
-            PlayerData player = new PlayerData(startingMoney, clickCount);
+            StatisitcsManager statisitcsManager = new StatisitcsManager(startingMoney, clickCount);
             ModifierManager modifiers = new ModifierManager();
             Inventory playerInventory = new Inventory();
 
-            gameState = new GameState(player, modifiers, playerInventory);
+            player = new Player(statisitcsManager, modifiers, playerInventory);
         }
 
-        LauncherWindow launcher = new LauncherWindow(gameState);
+        LauncherWindow launcher = new LauncherWindow(player);
         launcher.Show();
     }
        

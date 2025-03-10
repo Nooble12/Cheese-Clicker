@@ -1,5 +1,5 @@
 ﻿using Cheese_Clicker.Items;
-using Cheese_Clicker.Player;
+using Cheese_Clicker.PlayerClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;

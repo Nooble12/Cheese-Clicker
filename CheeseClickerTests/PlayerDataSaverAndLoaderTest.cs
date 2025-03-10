@@ -2,7 +2,7 @@
 using Cheese_Clicker.DataSaving;
 using Cheese_Clicker.Items;
 using Cheese_Clicker.ModifierClasses;
-using Cheese_Clicker.Player;
+using Cheese_Clicker.PlayerClasses;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,30 +20,30 @@ namespace CheeseClickerTests
         {
             long money = 200;
             int clicks = 10;
-            PlayerData player = new PlayerData(money, 10);
+            StatisitcsManager player = new StatisitcsManager(money, 10);
             ModifierManager manager = new ModifierManager();
             Inventory inventory = new Inventory();
-            GameState gameState = new GameState(player, manager, inventory);
+            Player gameState = new Player(player, manager, inventory);
 
             PlayerDataSaver dataSaver = new();
             dataSaver.SavePlayerData(gameState, "TestFile");
 
             PlayerDataLoader dataLoader = new PlayerDataLoader();
          
-            GameState testState = new GameState();
+            Player testState = new Player();
             testState = dataLoader.LoadPlayerGameState("TestFile.xml");
 
-            Assert.Equal(200, testState.playerData.money);
-            Assert.Equal(10, testState.playerData.clickCount);
+            Assert.Equal(200, testState.statistics.money);
+            Assert.Equal(10, testState.statistics.clickCount);
         }
 
         [Fact]
         public void Saving_And_Loading_ModifierManager()
         {
-            PlayerData player = new PlayerData();
+            StatisitcsManager player = new StatisitcsManager();
             ModifierManager manager = new ModifierManager();
             Inventory inventory = new Inventory();
-            GameState gameState = new GameState(player, manager, inventory);
+            Player gameState = new Player(player, manager, inventory);
 
             //Add mods
             Modifiers addMod = new AdditiveModifier();
@@ -59,7 +59,7 @@ namespace CheeseClickerTests
             dataSaver.SavePlayerData(gameState, "TestModifiersFile");
 
             PlayerDataLoader dataLoader = new PlayerDataLoader();
-            GameState testState = new GameState();
+            Player testState = new Player();
             testState = dataLoader.LoadPlayerGameState("TestModifiersFile.xml");
 
             ModifierManager testManager = new ModifierManager();
@@ -80,10 +80,10 @@ namespace CheeseClickerTests
         [Fact]
         public void Saving_And_Loading_PlayerInventory()
         {
-            PlayerData player = new PlayerData();
+            StatisitcsManager player = new StatisitcsManager();
             ModifierManager manager = new ModifierManager();
             Inventory inventory = new Inventory();
-            GameState gameState = new GameState(player, manager, inventory);
+            Player gameState = new Player(player, manager, inventory);
 
             Item computerItem = new ComputerItem();
             Item cheeseItem = new CheeseItem();
@@ -96,11 +96,11 @@ namespace CheeseClickerTests
             dataSaver.SavePlayerData(gameState, "TestInventoryFile");
 
             PlayerDataLoader dataLoader = new PlayerDataLoader();
-            GameState testState = new GameState();
+            Player testState = new Player();
             testState = dataLoader.LoadPlayerGameState("TestInventoryFile.xml");
 
-            int actualComputerCount = testState.playerInventory.GetItemQuantity(computerItem);
-            int actualCheeseCount = testState.playerInventory.GetItemQuantity(cheeseItem);
+            int actualComputerCount = testState.inventory.GetItemQuantity(computerItem);
+            int actualCheeseCount = testState.inventory.GetItemQuantity(cheeseItem);
 
             Assert.Equal(2, actualComputerCount);
             Assert.Equal(1, actualCheeseCount);

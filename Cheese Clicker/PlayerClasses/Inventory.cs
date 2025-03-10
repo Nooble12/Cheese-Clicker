@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Cheese_Clicker.Player
+namespace Cheese_Clicker.PlayerClasses
 {
     [XmlRoot("PlayerInventory")]
     public class Inventory

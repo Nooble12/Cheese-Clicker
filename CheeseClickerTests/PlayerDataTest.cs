@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cheese_Clicker.PlayerClasses;
 
 namespace CheeseClickerTests
 {
@@ -14,7 +15,7 @@ namespace CheeseClickerTests
         public void Add_Money()
         {
             long money = 100;
-            PlayerData player = new PlayerData(money, 0);
+            StatisitcsManager player = new StatisitcsManager(money, 0);
 
             long moneyToBeAdded = 100;
             player.AddMoney(moneyToBeAdded);
@@ -26,7 +27,7 @@ namespace CheeseClickerTests
         public void Remove_Money()
         {
             long money = 100;
-            PlayerData player = new PlayerData(money, 0);
+            StatisitcsManager player = new StatisitcsManager(money, 0);
 
             long moneyToBeRemoved = 100;
             player.RemoveMoney(moneyToBeRemoved);
@@ -38,7 +39,7 @@ namespace CheeseClickerTests
         public void Increment_Click_Count()
         {
             int clickCount = 0;
-            PlayerData player = new PlayerData(0, clickCount);
+            StatisitcsManager player = new StatisitcsManager(0, clickCount);
 
             player.IncrementClickCount();
 

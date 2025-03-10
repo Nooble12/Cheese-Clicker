@@ -1,4 +1,4 @@
-﻿using Cheese_Clicker.Player;
+﻿using Cheese_Clicker.PlayerClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cheese_Clicker.PlayerClasses;
 
 namespace Cheese_Clicker.Pages
 {
@@ -21,18 +22,18 @@ namespace Cheese_Clicker.Pages
     /// </summary>
     public partial class LauncherPage : Page
     {
-        GameState playerGameState;
+        Player player;
         Window launcherWindow;
-        public LauncherPage(GameState inGameState, Window inLauncherWindow)
+        public LauncherPage(Player inGameState, Window inLauncherWindow)
         {
             InitializeComponent();
-            playerGameState = inGameState;
+            player = inGameState;
             launcherWindow = inLauncherWindow;
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            GameWindow window = new GameWindow(playerGameState);
+            GameWindow window = new GameWindow(player);
             window.Visibility = Visibility.Visible;
             launcherWindow.Close();
         }

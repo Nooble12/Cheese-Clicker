@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cheese_Clicker.PlayerClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,8 @@ namespace Cheese_Clicker
     /// </summary>
     public partial class ShopMenu : Page
     {
-        private PlayerData player;
-        public ShopMenu(PlayerData inPlayer)
+        private Player player;
+        public ShopMenu(Player inPlayer)
         {
             InitializeComponent();
             //Visibility = Visibility.Visible;
@@ -37,7 +38,7 @@ namespace Cheese_Clicker
 
         private void setUIElements()
         {
-            balanceLabel.Content = "Balance: $" + player.money;
+            balanceLabel.Content = "Balance: $" + player.statistics.money;
         }
     }
 }

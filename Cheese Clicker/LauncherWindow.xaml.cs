@@ -1,6 +1,6 @@
 ﻿using Cheese_Clicker.ModifierClasses;
 using Cheese_Clicker.Pages;
-using Cheese_Clicker.Player;
+using Cheese_Clicker.PlayerClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cheese_Clicker.PlayerClasses;
 
 namespace Cheese_Clicker
 {
@@ -25,11 +26,11 @@ namespace Cheese_Clicker
     /// </summary>
     public partial class LauncherWindow : Window
     {
-        public LauncherWindow(GameState inPlayerGameState)
+        public LauncherWindow(Player inPlayer)
         {
             InitializeComponent();
             LauncherWin.Visibility = Visibility.Visible;
-            LauncherWin.Navigate(new LauncherPage(inPlayerGameState, this));
+            LauncherWin.Navigate(new LauncherPage(inPlayer, this));
         }
     }
 }

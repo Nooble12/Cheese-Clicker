@@ -1,21 +1,21 @@
-﻿using Cheese_Clicker.Player;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cheese_Clicker.PlayerClasses;
 
 namespace Cheese_Clicker.Generators
 {
     public class GenerateReward
     {
-        private GameState playerGameState;
+        private Player player;
         private RandomMoneyGenerator randomMoneyGenerator = new RandomMoneyGenerator(1, 100);
         private Random generator = new Random();
         private int chanceToWinItem = 10; // percent
-        public GenerateReward(GameState playerGameState)
+        public GenerateReward(Player playerGameState)
         {
-            this.playerGameState = playerGameState;
+            this.player = playerGameState;
         }
 
         public void SetChanceToWin(int inPercent)
@@ -29,14 +29,14 @@ namespace Cheese_Clicker.Generators
             if (number <= chanceToWinItem)
             {
                 RandomItemGenerator generator = new RandomItemGenerator();
-                playerGameState.playerInventory.AddItem(generator.GetRandomItem(), 1);
+                player.inventory.AddItem(generator.GetRandomItem(), 1);
             }
         }
 
         public long GetReward()
         {
             CheckForItemReward();
-            long finalMoneyGenerated = playerGameState.modifierManager.ApplyAllModifiers(randomMoneyGenerator.GetRandomMoney());
+            long finalMoneyGenerated = player.modifierManager.ApplyAllModifiers(randomMoneyGenerator.GetRandomMoney());
             return finalMoneyGenerated;
         }
     }

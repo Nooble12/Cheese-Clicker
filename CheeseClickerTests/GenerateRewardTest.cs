@@ -1,6 +1,6 @@
 ﻿using Cheese_Clicker.Generators;
 using Cheese_Clicker.Pages;
-using Cheese_Clicker.Player;
+using Cheese_Clicker.PlayerClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace CheeseClickerTests
         [Fact]
         public void GetReward()
         {
-            GameState gameState = new GameState();
+            Player gameState = new Player();
             GenerateReward reward = new GenerateReward(gameState);
 
             long moneyGained = reward.GetReward();
@@ -25,14 +25,14 @@ namespace CheeseClickerTests
         [Fact]
         public void CheckForItemReward()
         {
-            GameState gameState = new GameState();
+            Player gameState = new Player();
             GenerateReward reward = new GenerateReward(gameState);
 
             reward.SetChanceToWin(100);
 
             long moneyGained = reward.GetReward();
 
-            Assert.True(gameState.playerInventory.GetInventorySize() >= 1);
+            Assert.True(gameState.inventory.GetInventorySize() >= 1);
         }
     }
 }

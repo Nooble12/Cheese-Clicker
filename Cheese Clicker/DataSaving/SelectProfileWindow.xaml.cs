@@ -15,6 +15,7 @@ using System.Diagnostics;
 using Cheese_Clicker.ModifierClasses;
 using System.Threading.Channels;
 using Cheese_Clicker.Pages;
+using Cheese_Clicker.PlayerClasses;
 
 namespace Cheese_Clicker.DataSaving
 {
@@ -25,9 +26,9 @@ namespace Cheese_Clicker.DataSaving
     {
         private string saveFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SaveFiles");
         private string selectedFile = "N/A";
-        private PlayerData player;
+        private StatisitcsManager player;
         private ModifierManager modifiers;
-        public SelectProfileWindow(PlayerData inPlayer, ModifierManager inMod)
+        public SelectProfileWindow(StatisitcsManager inPlayer, ModifierManager inMod)
         {
             InitializeComponent();
             LoadFileList();
