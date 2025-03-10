@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Cheese_Clicker.PlayerClasses;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Packaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Cheese_Clicker.PlayerClasses;
 
 namespace Cheese_Clicker.DataSaving
 {

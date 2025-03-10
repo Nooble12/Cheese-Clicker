@@ -1,14 +1,7 @@
-﻿using Cheese_Clicker;
-using Cheese_Clicker.DataSaving;
+﻿using Cheese_Clicker.DataSaving;
 using Cheese_Clicker.Items;
 using Cheese_Clicker.ModifierClasses;
 using Cheese_Clicker.PlayerClasses;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CheeseClickerTests
 {

@@ -1,13 +1,9 @@
 ﻿using Cheese_Clicker.DataSaving;
 using Cheese_Clicker.ModifierClasses;
 using Cheese_Clicker.PlayerClasses;
-using System.Configuration;
-using System.Data;
 using System.Diagnostics;
 using System.IO;
-using System.Numerics;
 using System.Windows;
-using Cheese_Clicker.PlayerClasses;
 
 namespace Cheese_Clicker;
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cheese_Clicker.PlayerClasses;
+﻿using Cheese_Clicker.PlayerClasses;
 
 namespace Cheese_Clicker.Generators
 {
