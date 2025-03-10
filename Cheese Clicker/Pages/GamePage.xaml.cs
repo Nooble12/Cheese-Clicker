@@ -30,7 +30,7 @@ namespace Cheese_Clicker.Pages
         private BounceElement bounceElement = new BounceElement();
         private MoneyLabelEffect moneyLabelEffect;
 
-        private GenerateMoney moneyGenerator;
+        private GenerateReward moneyGenerator;
         public GamePage(GameState inPlayerGameState)
         {
             InitializeComponent();
@@ -39,13 +39,13 @@ namespace Cheese_Clicker.Pages
             UpdateModList();
             this.Loaded += GamePage_Loaded; // Ensure updates when returning
 
-            moneyGenerator = new GenerateMoney(gameState);
+            moneyGenerator = new GenerateReward(gameState);
             moneyLabelEffect = new MoneyLabelEffect(this);
         }
 
         private void CheeseButton_Click(object sender, RoutedEventArgs e)
         {
-            long moneyGained = moneyGenerator.GetFinalMoneyGenerated();
+            long moneyGained = moneyGenerator.GetReward();
             gameState.playerData.AddMoney(moneyGained);
 
             gameState.playerData.IncrementClickCount();
