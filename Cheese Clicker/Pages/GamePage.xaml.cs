@@ -67,5 +67,10 @@ namespace Cheese_Clicker.Pages
         {
             UpdateModList(); // Refresh on navigation back
         }
+
+        private void Inventory_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new InventoryPage(player));
+        }
     }
 }

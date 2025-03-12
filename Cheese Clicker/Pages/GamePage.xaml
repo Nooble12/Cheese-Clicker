@@ -135,7 +135,9 @@
             <Label Content="Modifers: " Width="240" Name="ModifierLabel"></Label>
         </StackPanel>
 
-        
+
         <Button Name="AdminControlButton" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="47" Width="148" Content="Admin Controls" Click="AdminButton_Click" Style="{DynamicResource RoundedButtonStyle}"></Button>
+        <Button Style="{DynamicResource RoundedButtonStyle}" x:Name ="inventoryButton" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Inventory" Click="Inventory_Click" Height="37" Width="220" Margin="0,380,0,0"
+    />
     </Grid>
 </Page>

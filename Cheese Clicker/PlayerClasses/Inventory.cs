@@ -101,5 +101,10 @@ namespace Cheese_Clicker.PlayerClasses
         {
             return InventoryEntries;
         }
+
+        public Dictionary<Item, int> GetInventoryAsDictionary()
+        {
+            return playerInventory;
+        }
     }
 }
