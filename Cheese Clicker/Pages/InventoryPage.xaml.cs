@@ -31,7 +31,7 @@ namespace Cheese_Clicker.Pages
             InitializeComponent();
             player = inPlayer;
             CreateRowAndColumns();
-            rowCount = (player.inventory.GetInventorySize() / columns) + 1;
+            rowCount = (player.inventory.GetInventorySize() + columns - 1) / columns;
             InsertButtons();
         }
 
