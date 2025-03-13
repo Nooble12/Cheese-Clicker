@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,9 +32,15 @@ namespace Cheese_Clicker.Pages
         {
             InitializeComponent();
             player = inPlayer;
+            LoadInventory();
+        }
+
+        private void LoadInventory()
+        {
             CreateRowAndColumns();
             rowCount = (player.inventory.GetInventorySize() + columns - 1) / columns;
             InsertButtons();
+            ItemInfoGrid.Visibility = Visibility.Hidden;
         }
 
         private void CreateRowAndColumns()
@@ -59,7 +67,7 @@ namespace Cheese_Clicker.Pages
             {
                 Button btn = new Button();
                 btn.Content = item.Value + " " + item.Key.name;
-                btn.Click += (s, e) => HandleItemClick();
+                btn.Click += (s, e) => HandleItemClick(item.Key);
                 Grid.SetRow(btn, row);
                 Grid.SetColumn(btn, column);
 
@@ -75,9 +83,41 @@ namespace Cheese_Clicker.Pages
             }
         }
 
-        private void HandleItemClick()
+        private void HandleItemClick(Item inItem)
         {
-            Debug.WriteLine("Clicked");
+            UpdateItemInfoGrid(inItem);
+        }
+
+        private void DeleteAllInventoryButtons()
+        {
+            var buttonsToRemove = InventoryGrid.Children.OfType<Button>().ToList();
+            foreach (var button in buttonsToRemove)
+            {
+                InventoryGrid.Children.Remove(button);
+            }
+        }
+
+        private void SellAllButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            long totalInventoryValue = 0;
+
+            foreach (var item in player.inventory.GetInventoryAsDictionary())
+            {
+                totalInventoryValue += item.Key.sellPrice;
+            }
+            Debug.WriteLine("Total Money: " + totalInventoryValue);
+            player.statistics.AddMoney(totalInventoryValue);
+            player.inventory.ClearInventory();
+            Debug.WriteLine("Current Balance: " + player.statistics.money);
+            DeleteAllInventoryButtons();
+            LoadInventory();
+        }
+
+        private void UpdateItemInfoGrid(Item inItem)
+        {
+            ItemInfoGrid.Visibility = Visibility.Visible;
+            ItemDescLabel.Content = (inItem.description + "\n" + "Sell Price: $" + inItem.sellPrice);
+            ItemNameLabel.Content = inItem.name;
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

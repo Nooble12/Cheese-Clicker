@@ -13,9 +13,17 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Width="780">
             <Label Content="Inventory" FontSize="40"/>
         </StackPanel>
-        <Grid Margin="10,68,10,60" x:Name="InventoryGrid">
-            
+        <Grid Margin="10,68,243,60" x:Name="InventoryGrid">
+
         </Grid>
+        <Grid Margin="0,68,10,60" x:Name="ItemInfoGrid" HorizontalAlignment="Right" Width="233">
+            <Label Name="ItemNameLabel" Content="Item Name" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
+            <Image x:Name="ItemImage" Margin="44,28,45,169"></Image>
+            <Label Name="ItemDescLabel" Margin="10,161,10,55" Content="Label here" ></Label>
+            <Button Margin="10,0,0,10" Name="UseItemButton" Content="Use Item" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="90" Height="40"></Button>
+            <Button Margin="133,0,0,10" Name="SellItemButton" Content="Sell Item" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="90" Height="40"></Button>
+        </Grid>
+        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="126" Content="Sell All Items" Background="Red" Click="SellAllButton_Clicked" Height="45"></Button>
         <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Back" Margin="10,0,0,10" Click="BackButton_Click" Width="97" Height="45"></Button>
     </Grid>
 </Page>
