@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.IO;
+using System.Xml.Serialization;
 
 namespace Cheese_Clicker.Items
 {
@@ -15,5 +16,8 @@ namespace Cheese_Clicker.Items
 
         [XmlElement("ItemSellPrice")]
         public override int sellPrice { get; set; } = 1000;
+
+        [XmlIgnore]
+        public override string imagePath { get; set; } = "cheese_ghost.png";
     }
 }

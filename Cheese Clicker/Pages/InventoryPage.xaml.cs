@@ -1,22 +1,11 @@
 ﻿using Cheese_Clicker.Items;
 using Cheese_Clicker.PlayerClasses;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Cheese_Clicker.Pages
 {
@@ -118,6 +107,14 @@ namespace Cheese_Clicker.Pages
             ItemInfoGrid.Visibility = Visibility.Visible;
             ItemDescLabel.Content = (inItem.description + "\n" + "Sell Price: $" + inItem.sellPrice);
             ItemNameLabel.Content = inItem.name;
+
+            try
+            {
+                ItemImage.Source = new BitmapImage(new Uri(inItem.GetImagePath()));
+            }catch(IOException e)
+            {
+                Debug.WriteLine("Error, could not load image");
+            }
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

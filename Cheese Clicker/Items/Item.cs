@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Runtime.InteropServices.Marshalling;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace Cheese_Clicker.Items
@@ -21,9 +23,20 @@ namespace Cheese_Clicker.Items
 
         [XmlElement("ItemUseValue")]
         public virtual long useValue { get; set; }
+
+        [XmlIgnore]
+        public virtual string folderPath { get; set; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", "ItemImages");
+
+        [XmlIgnore]
+        public virtual string imagePath { get; set; }
         public virtual void UseItem()
         {
 
+        }
+
+        public string GetImagePath()
+        {
+            return Path.Combine(folderPath, imagePath);
         }
 
         public virtual string ToString()
