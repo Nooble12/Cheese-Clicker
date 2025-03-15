@@ -16,9 +16,10 @@ namespace Cheese_Clicker.Pages
     /// </summary>
     public partial class InventoryPage : Page
     {
-        private int columns = 3;
+        private int columnCount = 3;
         private int rowCount;
         private Player player;
+        private BounceElement bounceElement = new BounceElement();
         public InventoryPage(Player inPlayer)
         {
             InitializeComponent();
@@ -39,9 +40,9 @@ namespace Cheese_Clicker.Pages
         {
             InventoryGrid.ColumnDefinitions.Clear();
             InventoryGrid.RowDefinitions.Clear();
-            rowCount = (player.inventory.GetInventorySize() + columns - 1) / columns;
+            rowCount = (player.inventory.GetInventorySize() + columnCount - 1) / columnCount;
 
-            for (int i = 0; i < columns; i++)
+            for (int i = 0; i < columnCount; i++)
             {
                 InventoryGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
@@ -60,14 +61,15 @@ namespace Cheese_Clicker.Pages
             {
                 Button btn = new Button();
                 btn.Content = item.Value + " " + item.Key.name;
-                btn.Click += (s, e) => HandleItemClick(item.Key);
+                btn.Click += (s, e) => HandleItemClick(item.Key, btn);
+                btn.Margin = new Thickness(3);
                 Grid.SetRow(btn, row);
                 Grid.SetColumn(btn, column);
 
                 InventoryGrid.Children.Add(btn);
 
                 column++;
-                if (column > 2)
+                if (column >= columnCount)
                 {
                     column = 0;
                     row++;
@@ -76,9 +78,10 @@ namespace Cheese_Clicker.Pages
             }
         }
 
-        private void HandleItemClick(Item inItem)
+        private void HandleItemClick(Item inItem, Button button)
         {
             UpdateItemInfoGrid(inItem);
+            bounceElement.PlayAnimation(button, 1.08, 0.08);
         }
 
         private void DeleteAllInventoryButtons()

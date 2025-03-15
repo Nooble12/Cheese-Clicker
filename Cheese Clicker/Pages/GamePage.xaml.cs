@@ -37,7 +37,7 @@ namespace Cheese_Clicker.Pages
             player.statistics.IncrementClickCount();
             UpdateStatisticsUI(reward.moneyGained);
 
-            bounceElement.PlayAnimation(cheeseButton);
+            bounceElement.PlayAnimation(cheeseButton, 2, 0.1);
 
             moneyLabelEffect.PlayAnimation(reward);
         }
