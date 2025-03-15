@@ -29,7 +29,6 @@ namespace Cheese_Clicker.Pages
         private void LoadInventory()
         {
             CreateRowAndColumns();
-            rowCount = (player.inventory.GetInventorySize() + columns - 1) / columns;
             InsertButtons();
             ItemInfoGrid.Visibility = Visibility.Hidden;
             UpdateTotalValueLabel();
@@ -40,6 +39,7 @@ namespace Cheese_Clicker.Pages
         {
             InventoryGrid.ColumnDefinitions.Clear();
             InventoryGrid.RowDefinitions.Clear();
+            rowCount = (player.inventory.GetInventorySize() + columns - 1) / columns;
 
             for (int i = 0; i < columns; i++)
             {
@@ -67,7 +67,7 @@ namespace Cheese_Clicker.Pages
                 InventoryGrid.Children.Add(btn);
 
                 column++;
-                if (column > 1)
+                if (column > 2)
                 {
                     column = 0;
                     row++;

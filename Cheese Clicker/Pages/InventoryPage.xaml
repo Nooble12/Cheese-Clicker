@@ -10,15 +10,16 @@
       Background="Gray">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="180"/>
         <Label Name="InventoryValueLabel" Content="Total Inventory Value: " HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" Width="780" Margin="0,10,0,0"/>
-        <Grid Margin="10,68,243,60" x:Name="InventoryGrid">
-
-        </Grid>
-        <Grid Margin="0,68,10,60" x:Name="ItemInfoGrid" HorizontalAlignment="Right" Width="233">
+        <ScrollViewer Margin="10,60,248,60" FlowDirection="RightToLeft" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid x:Name="InventoryGrid" Height="310" Width="502" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </ScrollViewer>
+        <Grid x:Name="ItemInfoGrid" HorizontalAlignment="Right" VerticalAlignment="Center" Width="233" Height="302">
             <Label Name="ItemNameLabel" Content="Item Name" HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
-            <Image x:Name="ItemImage" Margin="44,28,45,169"></Image>
-            <Label Name="ItemDescLabel" Margin="10,161,10,55" Content="Label here" ></Label>
+            <Grid Margin="0,25,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="129" Width="156">
+                <Image x:Name="ItemImage" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Height="120" Stretch="Uniform" ></Image>
+            </Grid>
+            <Label Name="ItemDescLabel" Margin="0,161,0,0" Content="Label here" HorizontalAlignment="Center" VerticalAlignment="Top" Height="86" Width="213"></Label>
             <Button Margin="10,0,0,10" Name="UseItemButton" Content="Use Item" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="90" Height="40"></Button>
             <Button Margin="133,0,0,10" Name="SellItemButton" Content="Sell Item" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="90" Height="40"></Button>
         </Grid>
