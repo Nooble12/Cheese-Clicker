@@ -112,7 +112,7 @@ namespace Cheese_Clicker.PlayerClasses
             long sum = 0;
             foreach (var item in playerInventory)
             {
-                sum += item.Key.sellPrice;
+                sum += (item.Key.sellPrice * item.Value);
             }
             return sum;
         }

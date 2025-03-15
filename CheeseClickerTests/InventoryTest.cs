@@ -93,12 +93,12 @@ namespace CheeseClickerTests
             Item computerItem = new ComputerItem();
             Item cheeseItem = new CheeseItem();
 
-            playerInventory.AddItem(computerItem, 1);
-            playerInventory.AddItem(cheeseItem, 1);
+            playerInventory.AddItem(computerItem, 2);
+            playerInventory.AddItem(cheeseItem, 3);
 
             long totalInventoryValue = playerInventory.GetTotalInventorySellValue();
 
-            Assert.Equal(1800, totalInventoryValue);
+            Assert.Equal(4400, totalInventoryValue);
         }
     }
 }
