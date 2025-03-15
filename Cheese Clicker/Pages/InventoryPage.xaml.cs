@@ -88,16 +88,8 @@ namespace Cheese_Clicker.Pages
 
         private void SellAllButton_Clicked(object sender, RoutedEventArgs e)
         {
-            long totalInventoryValue = 0;
-
-            foreach (var item in player.inventory.GetInventoryAsDictionary())
-            {
-                totalInventoryValue += item.Key.sellPrice;
-            }
-            Debug.WriteLine("Total Money: " + totalInventoryValue);
-            player.statistics.AddMoney(totalInventoryValue);
+            player.statistics.AddMoney(player.inventory.GetTotalInventorySellValue());
             player.inventory.ClearInventory();
-            Debug.WriteLine("Current Balance: " + player.statistics.money);
             DeleteAllInventoryButtons();
             LoadInventory();
         }

@@ -86,5 +86,19 @@ namespace CheeseClickerTests
             Assert.Equal(1, playerInventory.GetItemQuantity(cheeseItem));
 
         }
+        [Fact]
+        public void GetTotalInventorySellValue()
+        {
+            Inventory playerInventory = new Inventory();
+            Item computerItem = new ComputerItem();
+            Item cheeseItem = new CheeseItem();
+
+            playerInventory.AddItem(computerItem, 1);
+            playerInventory.AddItem(cheeseItem, 1);
+
+            long totalInventoryValue = playerInventory.GetTotalInventorySellValue();
+
+            Assert.Equal(1800, totalInventoryValue);
+        }
     }
 }

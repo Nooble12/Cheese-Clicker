@@ -106,5 +106,15 @@ namespace Cheese_Clicker.PlayerClasses
         {
             return playerInventory;
         }
+
+        public long GetTotalInventorySellValue()
+        {
+            long sum = 0;
+            foreach (var item in playerInventory)
+            {
+                sum += item.Key.sellPrice;
+            }
+            return sum;
+        }
     }
 }
