@@ -10,9 +10,8 @@
       Background="Gray">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Width="780">
-            <Label Content="Inventory" FontSize="40"/>
-        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="180"/>
+        <Label Name="InventoryValueLabel" Content="Total Inventory Value: " HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" Width="780" Margin="0,10,0,0"/>
         <Grid Margin="10,68,243,60" x:Name="InventoryGrid">
 
         </Grid>
@@ -23,7 +22,7 @@
             <Button Margin="10,0,0,10" Name="UseItemButton" Content="Use Item" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="90" Height="40"></Button>
             <Button Margin="133,0,0,10" Name="SellItemButton" Content="Sell Item" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="90" Height="40"></Button>
         </Grid>
-        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="126" Content="Sell All Items" Background="Red" Click="SellAllButton_Clicked" Height="45"></Button>
+        <Button Name="SellAllItemButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="126" Content="Sell All Items" Background="Red" Click="SellAllButton_Clicked" Height="45"></Button>
         <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Back" Margin="10,0,0,10" Click="BackButton_Click" Width="97" Height="45"></Button>
     </Grid>
 </Page>

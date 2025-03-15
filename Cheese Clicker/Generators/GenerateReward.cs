@@ -34,5 +34,11 @@ namespace Cheese_Clicker.Generators
             Reward reward = player.modifierManager.ApplyAllModifiers(randomMoneyGenerator.GetRandomMoney());
             return reward;
         }
+
+        public Reward GetSellItemReward(long inValue)
+        {
+            Reward reward = player.modifierManager.ApplyAllModifiers(inValue);
+            return reward;
+        }
     }
 }

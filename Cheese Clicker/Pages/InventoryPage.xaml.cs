@@ -1,4 +1,6 @@
-﻿using Cheese_Clicker.Items;
+﻿using Cheese_Clicker.Animations;
+using Cheese_Clicker.Generators;
+using Cheese_Clicker.Items;
 using Cheese_Clicker.PlayerClasses;
 using System.Diagnostics;
 using System.IO;
@@ -30,6 +32,8 @@ namespace Cheese_Clicker.Pages
             rowCount = (player.inventory.GetInventorySize() + columns - 1) / columns;
             InsertButtons();
             ItemInfoGrid.Visibility = Visibility.Hidden;
+            UpdateTotalValueLabel();
+            DetermineSellButtonVisibility();
         }
 
         private void CreateRowAndColumns()
@@ -86,12 +90,40 @@ namespace Cheese_Clicker.Pages
             }
         }
 
+        private void DetermineSellButtonVisibility()
+        {
+            if (player.inventory.GetInventorySize() > 0)
+            {
+                SellAllItemButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                SellAllItemButton.Visibility = Visibility.Hidden;
+            }
+        }
+
         private void SellAllButton_Clicked(object sender, RoutedEventArgs e)
         {
-            player.statistics.AddMoney(player.inventory.GetTotalInventorySellValue());
-            player.inventory.ClearInventory();
-            DeleteAllInventoryButtons();
-            LoadInventory();
+            long totalInventorySellValue = player.inventory.GetTotalInventorySellValue();
+
+            if (totalInventorySellValue > 0)
+            {
+                GenerateReward rewardGenerator = new GenerateReward(player);
+                Reward reward = rewardGenerator.GetSellItemReward(totalInventorySellValue);
+
+                MoneyLabelEffect labelEffect = new MoneyLabelEffect(this);
+                labelEffect.PlayAnimation(reward);
+
+                player.statistics.AddMoney(reward.moneyGained);
+                player.inventory.ClearInventory();
+                DeleteAllInventoryButtons();
+                SellAllItemButton.Visibility = Visibility.Hidden;
+                LoadInventory();
+            }
+            else
+            {
+                Debug.WriteLine("Error, could not sell empty inventory");
+            }
         }
 
         private void UpdateItemInfoGrid(Item inItem)
@@ -107,6 +139,12 @@ namespace Cheese_Clicker.Pages
             {
                 Debug.WriteLine("Error, could not load image");
             }
+        }
+
+        public void UpdateTotalValueLabel()
+        {
+            long totalValue = player.inventory.GetTotalInventorySellValue();
+            InventoryValueLabel.Content = "Total Inventory Value: " + $"${player.inventory.GetTotalInventorySellValue():N0}";
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

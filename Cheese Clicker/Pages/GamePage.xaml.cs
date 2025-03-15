@@ -21,7 +21,7 @@ namespace Cheese_Clicker.Pages
         {
             InitializeComponent();
             player = inPlayer;
-            UpdateUI(player.statistics.money);
+            UpdateStatisticsUI(player.statistics.money);
             UpdateModList();
             this.Loaded += GamePage_Loaded; // Ensure updates when returning
 
@@ -35,7 +35,7 @@ namespace Cheese_Clicker.Pages
             player.statistics.AddMoney(reward.moneyGained);
 
             player.statistics.IncrementClickCount();
-            UpdateUI(reward.moneyGained);
+            UpdateStatisticsUI(reward.moneyGained);
 
             bounceElement.PlayAnimation(cheeseButton);
 
@@ -48,7 +48,7 @@ namespace Cheese_Clicker.Pages
             NavigationService.Navigate(new ShopMenu(player));
         }
 
-        private void UpdateUI(long moneyGained)
+        private void UpdateStatisticsUI(long moneyGained)
         {
             cheeseButton.Content = $"${moneyGained:N0}";
             MoneyLabel.Content = $"Money: ${player.statistics.money:N0}";
@@ -66,11 +66,17 @@ namespace Cheese_Clicker.Pages
         private void GamePage_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateModList(); // Refresh on navigation back
+            UpdateMoneyLabel();
         }
 
         private void Inventory_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new InventoryPage(player));
+        }
+
+        private void UpdateMoneyLabel()
+        {
+            MoneyLabel.Content = $"Money: ${player.statistics.money:N0}";
         }
     }
 }
