@@ -124,7 +124,7 @@
     <Grid>
         <Button Style="{DynamicResource RoundedButtonStyle}" Name="cheeseButton" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Click Me" Background="White" Click="CheeseButton_Click" Height="90" Width="90"/>
 
-        <Button Style="{DynamicResource RoundedButtonStyle}" Name ="shopButton" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Shop" Click="ShopButton_Click" Height="192" Width="44"
+        <Button Style="{DynamicResource RoundedButtonStyle}" Name ="shopButton" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Shop" Click="ShopButton_Click" Height="192" Width="50"
     />
         <StackPanel Margin="10,10,433,336">
             <Label x:Name="MoneyLabel" FontSize="20" Content="Money: "/>
@@ -136,8 +136,7 @@
         </StackPanel>
 
 
-        <Button Name="AdminControlButton" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="47" Width="148" Content="Admin Controls" Click="AdminButton_Click" Style="{DynamicResource RoundedButtonStyle}"></Button>
-        <Button Style="{DynamicResource RoundedButtonStyle}" x:Name ="inventoryButton" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Inventory" Click="Inventory_Click" Height="37" Width="220" Margin="0,380,0,0"
-    />
+        <Button Name="AdminControlButton" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="148" Content="Admin Controls" Click="AdminButton_Click" Style="{DynamicResource RoundedButtonStyle}"></Button>
+        <Button Name="InventoryButton" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="50" Width="230" Content="Inventory" Click="Inventory_Click" Style="{DynamicResource RoundedButtonStyle}"></Button>
     </Grid>
 </Page>
