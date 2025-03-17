@@ -6,6 +6,7 @@ namespace Cheese_Clicker.ModifierClasses
     [XmlInclude(typeof(CriticalChanceModifier))]
     [XmlInclude(typeof(CriticalMultiplierModifier))]
     [XmlInclude(typeof(AdditiveModifier))]
+    [XmlInclude(typeof(ItemModifiers))]
     [XmlType("Modifier")]
     public class Modifiers
     {

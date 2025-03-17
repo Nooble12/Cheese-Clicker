@@ -20,6 +20,7 @@ namespace Cheese_Clicker.Pages
         private int rowCount;
         private Player player;
         private BounceElement bounceElement = new BounceElement();
+        private Item selectedItem = null;
         public InventoryPage(Player inPlayer)
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace Cheese_Clicker.Pages
 
         private void LoadInventory()
         {
+            DeleteAllInventoryButtons();
             CreateRowAndColumns();
             InsertButtons();
             ItemInfoGrid.Visibility = Visibility.Hidden;
@@ -80,8 +82,19 @@ namespace Cheese_Clicker.Pages
 
         private void HandleItemClick(Item inItem, Button button)
         {
+            AssignSelectedItem(inItem);
             UpdateItemInfoGrid(inItem);
             bounceElement.PlayAnimation(button, 1.08, 0.08);
+        }
+
+        private void AssignSelectedItem(Item inItem)
+        {
+            selectedItem = inItem;
+        }
+
+        private void DeselectItem()
+        {
+            selectedItem = null;
         }
 
         private void DeleteAllInventoryButtons()
@@ -108,6 +121,7 @@ namespace Cheese_Clicker.Pages
         private void SellAllButton_Clicked(object sender, RoutedEventArgs e)
         {
             long totalInventorySellValue = player.inventory.GetTotalInventorySellValue();
+            DeselectItem();
 
             if (totalInventorySellValue > 0)
             {
@@ -126,6 +140,23 @@ namespace Cheese_Clicker.Pages
             else
             {
                 Debug.WriteLine("Error, could not sell empty inventory");
+            }
+        }
+
+        private void UseItem_Click(object sender, RoutedEventArgs e)
+        {
+            bounceElement.PlayAnimation(UseItemButton, 1.08, 0.08);
+
+            if(selectedItem != null)
+            {
+                player.inventory.RemoveItem(selectedItem, 1);
+                NavigationService.Navigate(new UseItemPage(selectedItem, player));
+                LoadInventory();
+                DeselectItem();
+            }
+            else
+            {
+                Debug.WriteLine("Error, could not find item");
             }
         }
 

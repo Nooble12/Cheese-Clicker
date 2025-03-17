@@ -1,4 +1,5 @@
 ﻿using Cheese_Clicker.Generators;
+using System.Diagnostics;
 using System.Printing;
 using System.Text;
 using System.Xml.Serialization;
@@ -13,10 +14,14 @@ namespace Cheese_Clicker.ModifierClasses
 
         private Random generator = new Random();
 
+        //Modifier Values
         private int totalAdditiveValue = 0;
         private int totalMultiplyValue = 1;
         private int totalCritChance = 10; //percent
         private int totalCritMultiplier = 2;
+
+        //Item Modifier Buffs
+        private int totalItemMultiplierValue = 1;
 
         public void AddModifier(Modifiers inModifier)
         {
@@ -44,6 +49,12 @@ namespace Cheese_Clicker.ModifierClasses
                 case CriticalMultiplierModifier critMultiplierMod:
                     totalCritMultiplier += inModifier.GetModifierValue();
                     break;
+                case CheeseItemModifier multiplyMod:
+                    totalItemMultiplierValue += inModifier.GetModifierValue();
+                    break;
+                case ComputerItemModifier multiplyMod:
+                    totalItemMultiplierValue += inModifier.GetModifierValue();
+                    break;
             }
         }
 
@@ -52,10 +63,6 @@ namespace Cheese_Clicker.ModifierClasses
         {
             foreach (var modifier in modifierList)
             {
-                int totalAdditiveValue = 0;
-                int totalMultiplyValue = 1;
-                int totalCritChance = 10; //percent
-                int totalCritMultiplier = 2;
                 CalculateStats(modifier);
             }
         }
@@ -64,7 +71,7 @@ namespace Cheese_Clicker.ModifierClasses
 
         public Reward ApplyAllModifiers(long moneyAmount)
         {
-            long finalMoneyGained = CalculateCritReward(moneyAmount + totalAdditiveValue) * totalMultiplyValue;
+            long finalMoneyGained = CalculateCritReward(moneyAmount + totalAdditiveValue) * totalMultiplyValue * totalItemMultiplierValue;
 
             Reward rewardObject = new Reward(finalMoneyGained, critType);
 
@@ -145,6 +152,13 @@ namespace Cheese_Clicker.ModifierClasses
         public List<Modifiers> GetModifierList()
         {
             return modifierList;
+        }
+
+        public void ResetAllItemBuffs()
+        {
+            totalItemMultiplierValue = 1;
+
+            modifierList.RemoveAll(mod => mod is ItemModifiers);
         }
 
     }

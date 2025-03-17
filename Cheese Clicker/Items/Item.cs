@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using Cheese_Clicker.PlayerClasses;
+using System.Diagnostics;
+using System.IO;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 using System.Xml.Serialization;
@@ -24,14 +26,19 @@ namespace Cheese_Clicker.Items
         [XmlElement("ItemUseValue")]
         public virtual long useValue { get; set; }
 
+        [XmlElement("WinChance")]
+        public virtual int winChance { get; set; }
+
         [XmlIgnore]
         public virtual string folderPath { get; set; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", "ItemImages");
 
         [XmlIgnore]
         public virtual string imagePath { get; set; }
-        public virtual void UseItem()
+        [XmlIgnore]
+        public virtual string useItemMessage { get; set; } = "N/A";
+        public virtual void UseItem(Player playerData)
         {
-
+            Debug.WriteLine("Uh oh, default item used.");
         }
 
         public string GetImagePath()
@@ -48,6 +55,7 @@ namespace Cheese_Clicker.Items
             builder.AppendLine("Sell Price: " + sellPrice);
             return builder.ToString();
         }
+
         public override bool Equals(object obj)
         {
             if (obj is Item other)
