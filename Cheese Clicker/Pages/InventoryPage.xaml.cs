@@ -35,7 +35,7 @@ namespace Cheese_Clicker.Pages
             InsertButtons();
             ItemInfoGrid.Visibility = Visibility.Hidden;
             UpdateTotalValueLabel();
-            DetermineSellButtonVisibility();
+            DetermineUIVisibility();
         }
 
         private void CreateRowAndColumns()
@@ -106,15 +106,17 @@ namespace Cheese_Clicker.Pages
             }
         }
 
-        private void DetermineSellButtonVisibility()
+        private void DetermineUIVisibility()
         {
             if (player.inventory.GetInventorySize() > 0)
             {
                 SellAllItemButton.Visibility = Visibility.Visible;
+                InventoryScrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
             }
             else
             {
                 SellAllItemButton.Visibility = Visibility.Hidden;
+                InventoryScrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
             }
         }
 

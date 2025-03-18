@@ -10,8 +10,8 @@
       Title="UseItemPage">
 
     <Grid>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Back" Margin="10,0,0,10" Click="BackButton_Click" Width="97" Height="45"/>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Back" Margin="10,0,0,10" Click="BackButton_Click" Width="97" Height="45" Template="{DynamicResource CurvedButton}"/>
         <Label Name="SelectedItemLabel" Content="Selected Item: " HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" Width="800" Margin="10,10,0,0"></Label>
-        <Label Name="UseItemMessage" Content="Item message here" HorizontalAlignment="Center" VerticalAlignment="Center" Width="394"></Label>
+        <Label Name="UseItemMessage" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Content="Item message here" HorizontalAlignment="Center" VerticalAlignment="Center" Width="780"></Label>
     </Grid>
 </Page>
