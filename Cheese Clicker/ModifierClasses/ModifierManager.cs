@@ -154,7 +154,7 @@ namespace Cheese_Clicker.ModifierClasses
             return modifierList;
         }
 
-        public void ResetAllItemBuffs()
+        public void ResetAllItemModifiers()
         {
             totalItemMultiplierValue = 1;
 

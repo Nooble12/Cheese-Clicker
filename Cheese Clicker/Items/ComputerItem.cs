@@ -59,7 +59,7 @@ namespace Cheese_Clicker.Items
 
         private void ClearItemBuff(Player player)
         {
-            player.modifierManager.ResetAllItemBuffs();
+            player.modifierManager.ResetAllItemModifiers();
         }
     }
 }

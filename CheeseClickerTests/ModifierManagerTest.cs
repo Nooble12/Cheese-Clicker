@@ -167,5 +167,28 @@ namespace CheeseClickerTests
             //Assert
             Assert.Equal(600, newMoneyValue);
         }
+
+        [Fact]
+        public void ResetAllItemModifiers_AllItemModifiersResetToDefault()
+        {
+            ModifierManager manager = new ModifierManager();
+            Modifiers cheeseMod = new CheeseItemModifier();
+            Modifiers computerMod = new ComputerItemModifier();
+            Modifiers additiveMod = new AdditiveModifier();
+
+            manager.AddModifier(cheeseMod);
+            manager.AddModifier(computerMod);
+            manager.AddModifier(additiveMod);
+
+            manager.ResetAllItemModifiers();
+
+            List<Modifiers> modList = new List<Modifiers>();
+            modList = manager.GetModifierList();
+
+            Assert.Single(modList);
+            Assert.Contains(additiveMod, modList);
+            Assert.DoesNotContain(cheeseMod, modList);
+            Assert.DoesNotContain(computerMod, modList);
+        }
     }
 }
