@@ -127,13 +127,7 @@ namespace Cheese_Clicker.Pages
 
             if (totalInventorySellValue > 0)
             {
-                GenerateReward rewardGenerator = new GenerateReward(player);
-                Reward reward = rewardGenerator.GetSellItemReward(totalInventorySellValue);
-
-                MoneyLabelEffect labelEffect = new MoneyLabelEffect(this);
-                labelEffect.PlayAnimation(reward);
-
-                player.statistics.AddMoney(reward.moneyGained);
+                SellItem(totalInventorySellValue);
                 player.inventory.ClearInventory();
                 DeleteAllInventoryButtons();
                 SellAllItemButton.Visibility = Visibility.Hidden;
@@ -143,6 +137,23 @@ namespace Cheese_Clicker.Pages
             {
                 Debug.WriteLine("Error, could not sell empty inventory");
             }
+        }
+
+        private void SellItem(long itemSellValue)
+        {
+            GenerateReward rewardGenerator = new GenerateReward(player);
+            Reward reward = rewardGenerator.GetSellItemReward(itemSellValue);
+            player.statistics.AddMoney(reward.moneyGained);
+            MoneyLabelEffect labelEffect = new MoneyLabelEffect(this);
+            labelEffect.PlayAnimation(reward);
+        }
+
+        private void SellSingleItem_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedItemSellValue = selectedItem.sellPrice;
+            SellItem(selectedItemSellValue);
+            player.inventory.RemoveItem(selectedItem, 1);
+            LoadInventory();
         }
 
         private void UseItem_Click(object sender, RoutedEventArgs e)
