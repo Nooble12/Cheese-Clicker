@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Media;
+using System.Windows.Media;
 
 namespace Cheese_Clicker.SoundClasses
 {
@@ -8,7 +9,7 @@ namespace Cheese_Clicker.SoundClasses
     {
         private static readonly string SoundDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "resources", "Sounds");
 
-        public static SoundPlayer soundEffect;
+        public static MediaPlayer soundEffect;
         public static void PlaySound(SoundEffects sound)
         {
             switch (sound)
@@ -31,7 +32,8 @@ namespace Cheese_Clicker.SoundClasses
         {
             try 
             {
-                soundEffect = new SoundPlayer(Path.Combine(SoundDirectory, fileName));
+                soundEffect = new MediaPlayer();
+                soundEffect.Open(new Uri(Path.Combine(SoundDirectory, fileName)));
                 soundEffect.Play();
             }
             catch(Exception e)
