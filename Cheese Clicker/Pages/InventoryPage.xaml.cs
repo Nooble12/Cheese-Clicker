@@ -2,6 +2,7 @@
 using Cheese_Clicker.Generators;
 using Cheese_Clicker.Items;
 using Cheese_Clicker.PlayerClasses;
+using Cheese_Clicker.SoundClasses;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -82,6 +83,7 @@ namespace Cheese_Clicker.Pages
 
         private void HandleItemClick(Item inItem, Button button)
         {
+            SoundManager.PlaySound(SoundEffects.Click);
             AssignSelectedItem(inItem);
             UpdateItemInfoGrid(inItem);
             bounceElement.PlayAnimation(button, 1.08, 0.08);
@@ -122,6 +124,7 @@ namespace Cheese_Clicker.Pages
 
         private void SellAllButton_Clicked(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySound(SoundEffects.Click);
             long totalInventorySellValue = player.inventory.GetTotalInventorySellValue();
             DeselectItem();
 
@@ -150,6 +153,7 @@ namespace Cheese_Clicker.Pages
 
         private void SellSingleItem_Click(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySound(SoundEffects.Click);
             int selectedItemSellValue = selectedItem.sellPrice;
             SellItem(selectedItemSellValue);
             player.inventory.RemoveItem(selectedItem, 1);
@@ -158,6 +162,7 @@ namespace Cheese_Clicker.Pages
 
         private void UseItem_Click(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySound(SoundEffects.Click);
             bounceElement.PlayAnimation(UseItemButton, 1.08, 0.08);
 
             if(selectedItem != null)
@@ -195,6 +200,7 @@ namespace Cheese_Clicker.Pages
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySound(SoundEffects.Click);
             NavigationService.GoBack();
         }
     }

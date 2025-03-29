@@ -1,4 +1,5 @@
 ﻿using Cheese_Clicker.PlayerClasses;
+using Cheese_Clicker.SoundClasses;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -22,6 +23,7 @@ namespace Cheese_Clicker
 
         private void ShopBackButton_Click(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySound(SoundEffects.Click);
             NavigationService.GoBack();
         }
 

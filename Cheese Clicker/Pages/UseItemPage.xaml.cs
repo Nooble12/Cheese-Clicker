@@ -1,5 +1,6 @@
 ﻿using Cheese_Clicker.Items;
 using Cheese_Clicker.PlayerClasses;
+using Cheese_Clicker.SoundClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,7 @@ namespace Cheese_Clicker.Pages
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySound(SoundEffects.Click);
             NavigationService.GoBack();
         }
     }

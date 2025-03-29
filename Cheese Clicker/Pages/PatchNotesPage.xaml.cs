@@ -1,4 +1,5 @@
-﻿using Cheese_Clicker.Utilities;
+﻿using Cheese_Clicker.SoundClasses;
+using Cheese_Clicker.Utilities;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,6 +31,7 @@ namespace Cheese_Clicker
 
         private void PatchNotesBackButton_Click(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySound(SoundEffects.Click);
             NavigationService.GoBack();
         }
 

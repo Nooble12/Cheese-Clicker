@@ -32,4 +32,13 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="resources\Sounds\Click.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="resources\Sounds\MouseClick.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

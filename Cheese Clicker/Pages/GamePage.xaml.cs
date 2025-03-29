@@ -1,6 +1,7 @@
 ﻿using Cheese_Clicker.Animations;
 using Cheese_Clicker.Generators;
 using Cheese_Clicker.PlayerClasses;
+using Cheese_Clicker.SoundClasses;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -37,6 +38,8 @@ namespace Cheese_Clicker.Pages
             player.statistics.IncrementClickCount();
             UpdateStatisticsUI(reward.moneyGained);
 
+            SoundManager.PlaySound(SoundEffects.Click);
+
             bounceElement.PlayAnimation(cheeseButton, 2, 0.1);
 
             moneyLabelEffect.PlayAnimation(reward);
@@ -45,6 +48,7 @@ namespace Cheese_Clicker.Pages
         private void ShopButton_Click(object sender, RoutedEventArgs e)
         {
             //BounceElement element = new(shopButton);
+            SoundManager.PlaySound(SoundEffects.Click);
             NavigationService.Navigate(new ShopMenu(player));
         }
 
@@ -61,6 +65,7 @@ namespace Cheese_Clicker.Pages
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySound(SoundEffects.Click);
             NavigationService.Navigate(new AdminControlPage(player));
         }
         private void GamePage_Loaded(object sender, RoutedEventArgs e)
@@ -71,6 +76,7 @@ namespace Cheese_Clicker.Pages
 
         private void Inventory_Click(object sender, RoutedEventArgs e)
         {
+            SoundManager.PlaySound(SoundEffects.Click);
             NavigationService.Navigate(new InventoryPage(player));
         }
 
