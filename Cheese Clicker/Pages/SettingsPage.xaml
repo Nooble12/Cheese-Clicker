@@ -17,13 +17,13 @@
                 <StackPanel>
                     <Grid>
                         <Label Content="Music" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Width="195"></Label>
-                        <Slider Maximum="100" Name="MusicVolumeSlider" Margin="200,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="270" ValueChanged="MusicVolumeSlider_ValueChanged" PreviewMouseLeftButtonUp="MusicVolumeSlider_MouseLeftButtonUp"></Slider>
+                        <Slider TickFrequency="1" IsSnapToTickEnabled="True" Maximum="100" Name="MusicVolumeSlider" Margin="200,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="270" ValueChanged="MusicVolumeSlider_ValueChanged" PreviewMouseLeftButtonUp="MusicVolumeSlider_MouseLeftButtonUp"></Slider>
                         <TextBlock Name="MusicVolumeTextBox" Text="{Binding ElementName = MusicVolumeSlider, Path= Value}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" Margin="478,0,0,0" Width="55" RenderTransformOrigin="0.302,0.585"></TextBlock>
                     </Grid>
 
                     <Grid>
                         <Label Content="Sound Effects" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Width="195"></Label>
-                        <Slider Maximum="100" Name="SoundEffectVolumeSlider" Margin="200,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="270" ValueChanged="SoundEffectVolumeSlider_ValueChanged" PreviewMouseLeftButtonUp="SoundVolumeSlider_MouseLeftButtonUp"></Slider>
+                        <Slider TickFrequency="1" IsSnapToTickEnabled="True" Maximum="100" Name="SoundEffectVolumeSlider" Margin="200,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="270" ValueChanged="SoundEffectVolumeSlider_ValueChanged" PreviewMouseLeftButtonUp="SoundVolumeSlider_MouseLeftButtonUp"></Slider>
                         <TextBlock Name="SoundEffectTextBox" Text="{Binding ElementName = SoundEffectVolumeSlider, Path= Value}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" Margin="478,0,0,0" Width="55" RenderTransformOrigin="0.302,0.585"></TextBlock>
                     </Grid>
 

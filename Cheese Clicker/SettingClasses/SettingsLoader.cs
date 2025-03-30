@@ -19,7 +19,7 @@ namespace Cheese_Clicker.SettingClasses
                 SerializeSettingsHelper settings = new SerializeSettingsHelper();
                 using (FileStream fileStream = new FileStream(saveFilePath, FileMode.Open))
                 {
-                settings = (SerializeSettingsHelper)xmlSerializer.Deserialize(fileStream);
+                    settings = (SerializeSettingsHelper)xmlSerializer.Deserialize(fileStream);
                 }
 
                 ApplySettings(settings);
