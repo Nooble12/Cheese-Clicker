@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
+﻿using Cheese_Clicker.SettingClasses;
+using System.Diagnostics;
 using System.IO;
-using System.Media;
 using System.Windows.Media;
 
 namespace Cheese_Clicker.SoundClasses
@@ -34,6 +34,7 @@ namespace Cheese_Clicker.SoundClasses
             {
                 soundEffect = new MediaPlayer();
                 soundEffect.Open(new Uri(Path.Combine(SoundDirectory, fileName)));
+                soundEffect.Volume = (GameSettings.SoundEffectVolumeLevel / 100);
                 soundEffect.Play();
             }
             catch(Exception e)

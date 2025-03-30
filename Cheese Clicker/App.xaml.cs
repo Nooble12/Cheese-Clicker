@@ -1,6 +1,7 @@
 ﻿using Cheese_Clicker.DataSaving;
 using Cheese_Clicker.ModifierClasses;
 using Cheese_Clicker.PlayerClasses;
+using Cheese_Clicker.SettingClasses;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -21,6 +22,10 @@ public partial class App : Application
         Debug.WriteLine("Game Closing");
         PlayerDataSaver dataSaver = new();
         dataSaver.SavePlayerData(player, "GameSave");
+
+        SettingsSaver settingSaver = new SettingsSaver();
+        settingSaver.SaveGameSettings();
+
         Debug.WriteLine(dataSaver.GetSavePath());
         base.OnExit(e);
     }
@@ -49,6 +54,9 @@ public partial class App : Application
         if (hasProfileInFile())
         {
             PlayerDataLoader dataLoader = new PlayerDataLoader();
+
+            SettingsLoader settingsLoader = new SettingsLoader();
+            settingsLoader.LoadGameSettings();
 
             player = dataLoader.LoadPlayerGameState("GameSave.xml");
             //gameState.modifierManager.ReCalculateAllStats();

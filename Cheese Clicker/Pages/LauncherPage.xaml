@@ -12,7 +12,11 @@
       >
 
     <Grid>
-        <Button Style="{DynamicResource RoundedCornerButton}" Name="PlayButton" HorizontalAlignment="Center" VerticalAlignment="Center" Height="53" Width="140" Content="Play" Click="PlayButton_Click" Template="{DynamicResource CurvedButton}"/>
-        <Button Style="{DynamicResource RoundedCornerButton}" x:Name="PatchNotesButton" HorizontalAlignment="Center" VerticalAlignment="Top" Height="54" Width="140" Content="Patch Notes" Click="PatchNotesButton_Click" Template="{DynamicResource CurvedButton}" Margin="0,256,0,0"/>
+        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,-150">
+            <Button Style="{DynamicResource RoundedCornerButton}" Name="PlayButton" HorizontalAlignment="Center" VerticalAlignment="Center" Height="53" Width="140" Content="Play" Click="PlayButton_Click" Template="{DynamicResource CurvedButton}"/>
+            <Button Style="{DynamicResource RoundedCornerButton}" x:Name="SettingsButton" HorizontalAlignment="Center" VerticalAlignment="Top" Height="54" Width="140" Content="Settings" Click="SettingsButton_Click" Template="{DynamicResource CurvedButton}"/>
+            <Button Style="{DynamicResource RoundedCornerButton}" x:Name="PatchNotesButton" HorizontalAlignment="Center" VerticalAlignment="Top" Height="54" Width="140" Content="Patch Notes" Click="PatchNotesButton_Click" Template="{DynamicResource CurvedButton}"/>
+        </StackPanel>
     </Grid>
 </Page>

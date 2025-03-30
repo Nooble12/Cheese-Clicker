@@ -80,6 +80,12 @@ namespace Cheese_Clicker.Pages
             NavigationService.Navigate(new InventoryPage(player));
         }
 
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            SoundManager.PlaySound(SoundEffects.Click);
+            NavigationService.Navigate(new SettingsPage());
+        }
+
         private void UpdateMoneyLabel()
         {
             MoneyLabel.Content = $"Money: ${player.statistics.money:N0}";

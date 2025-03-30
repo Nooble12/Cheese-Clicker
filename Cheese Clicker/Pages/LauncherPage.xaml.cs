@@ -33,5 +33,11 @@ namespace Cheese_Clicker.Pages
             SoundManager.PlaySound(SoundEffects.Click);
             NavigationService.Navigate(new PatchNotesPage());
         }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            SoundManager.PlaySound(SoundEffects.Click);
+            NavigationService.Navigate(new SettingsPage());
+        }
     }
 }
