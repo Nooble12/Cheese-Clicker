@@ -27,6 +27,6 @@
             
         </Label>
         
-        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Back" Margin="10,0,0,10" Click="BackButton_Click" Width="97" Height="45"></Button>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Back" Margin="10,0,0,10" Click="BackButton_Click" Width="97" Height="45" Template="{DynamicResource CurvedButton}"></Button>
     </Grid>
 </Page>

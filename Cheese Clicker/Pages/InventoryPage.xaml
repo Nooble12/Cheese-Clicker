@@ -20,10 +20,10 @@
                 <Image x:Name="ItemImage" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Height="120" Stretch="Uniform" ></Image>
             </Grid>
             <Label Name="ItemDescLabel" Margin="0,161,0,0" Content="Label here" HorizontalAlignment="Center" VerticalAlignment="Top" Height="86" Width="213"></Label>
-            <Button Margin="10,0,0,10" Name="UseItemButton" Click="UseItem_Click" Content="Use Item" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="90" Height="40"></Button>
-            <Button Margin="133,0,0,10" Name="SellSingleItemButton" Click="SellSingleItem_Click" Content="Sell Item" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="90" Height="40"></Button>
+            <Button Margin="10,0,0,10" Name="UseItemButton" Click="UseItem_Click" Content="Use Item" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="90" Height="40" Template="{DynamicResource CurvedButton}"></Button>
+            <Button Margin="133,0,0,10" Name="SellSingleItemButton" Click="SellSingleItem_Click" Content="Sell Item" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="90" Height="40" Template="{DynamicResource CurvedButton}"></Button>
         </Grid>
-        <Button Name="SellAllItemButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="126" Content="Sell All Items" Background="Red" Click="SellAllButton_Clicked" Height="45"></Button>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Back" Margin="10,0,0,10" Click="BackButton_Click" Width="97" Height="45"></Button>
+        <Button Name="SellAllItemButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="126" Content="Sell All Items" Background="Red" Click="SellAllButton_Clicked" Height="45" Template="{DynamicResource CurvedButton}"></Button>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Back" Margin="10,0,0,10" Click="BackButton_Click" Width="97" Height="45" Template="{DynamicResource CurvedButton}"></Button>
     </Grid>
 </Page>
