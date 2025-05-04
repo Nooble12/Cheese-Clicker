@@ -50,15 +50,15 @@ namespace Cheese_Clicker.Pages
                 break;
                     
                 case Key.D1:
-                    DisplayShopPage();
+                    DisplayPage(new ShopMenu(player));
                 break;
 
                 case Key.D2:
-                    DisplayInventoryPage();
+                    DisplayPage(new InventoryPage(player));
                 break;
 
                 case Key.D3:
-                    DisplaySettingsPage();
+                    DisplayPage(new SettingsPage());
                 break;
             }
         }
@@ -80,7 +80,7 @@ namespace Cheese_Clicker.Pages
         }
         private void ShopButton_Click(object sender, RoutedEventArgs e)
         {
-            DisplayShopPage();
+            DisplayPage(new ShopMenu(player));
         }
 
         private void UpdateStatisticsUI(long moneyGained)
@@ -96,8 +96,9 @@ namespace Cheese_Clicker.Pages
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
-            DisplayAdminPage();
+            DisplayPage(new AdminControlPage(player));
         }
+
         private void GamePage_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateModList(); // Refresh on navigation back
@@ -106,40 +107,23 @@ namespace Cheese_Clicker.Pages
 
         private void Inventory_Click(object sender, RoutedEventArgs e)
         {
-            DisplayInventoryPage();
+            DisplayPage(new InventoryPage(player));
         }
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            DisplaySettingsPage();
+            DisplayPage(new SettingsPage());
         }
 
         private void UpdateMoneyLabel()
         {
             MoneyLabel.Content = $"Money: ${player.statistics.money:N0}";
         }
-        private void DisplayShopPage()
-        {
-            SoundManager.PlaySound(SoundEffects.Click);
-            NavigationService.Navigate(new ShopMenu(player));
-        }
 
-        private void DisplayAdminPage()
+        private void DisplayPage(Page page)
         {
             SoundManager.PlaySound(SoundEffects.Click);
-            NavigationService.Navigate(new AdminControlPage(player));
-        }
-
-        private void DisplayInventoryPage()
-        {
-            SoundManager.PlaySound(SoundEffects.Click);
-            NavigationService.Navigate(new InventoryPage(player));
-        }
-
-        private void DisplaySettingsPage()
-        {
-            SoundManager.PlaySound(SoundEffects.Click);
-            NavigationService.Navigate(new SettingsPage());
+            NavigationService.Navigate(page);
         }
     }
 }
