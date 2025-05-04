@@ -138,6 +138,7 @@
 
         <Button Name="AdminControlButton" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="148" Content="Admin Controls" Click="AdminButton_Click" Style="{DynamicResource RoundedButtonStyle}"></Button>
         <Button Name="InventoryButton" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="50" Width="230" Content="Inventory" Click="Inventory_Click" Style="{DynamicResource RoundedButtonStyle}"></Button>
+        <Button Name="PlayerStatsButton" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50" Width="230" Content="Player Statisitcs" Click="PlayerStatsButton_Click" Style="{DynamicResource RoundedButtonStyle}"></Button>
         <Button x:Name="SettingsButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="50" Width="148" Content="Settings" Click="Settings_Click" Style="{DynamicResource RoundedButtonStyle}"/>
     </Grid>
 </Page>

@@ -1,0 +1,22 @@
+﻿<Page x:Class="Cheese_Clicker.Pages.PlayerStatisticsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cheese_Clicker.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Background="Gray"
+      Title="StatisticsPage">
+
+    <Grid>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Back" Margin="10,0,0,10" Click="BackButton_Click" Width="97" Height="45" Template="{DynamicResource CurvedButton}"/>
+        <Label Content="Player Statistics" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" ></Label>
+        <StackPanel Name="StatStackPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Height="238" Width="780">
+            <Label Name="MasteryRankLabel" Content="Mastery Rank: N/A" FontSize="30"></Label>
+            <Label Name="CurrentMoneyLabel" Content="Current Balance: N/A" FontSize="30"></Label>
+            <Label Name="TotalMoneyGainedLabel" Content="Total Money Gained: N/A" FontSize="30"></Label>
+            <Label Name="TotalClicksLabel" Content="Total Clicks: N/A" FontSize="30"></Label>
+        </StackPanel>
+    </Grid>
+</Page>

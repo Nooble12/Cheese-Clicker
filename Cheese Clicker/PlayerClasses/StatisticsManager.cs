@@ -8,6 +8,12 @@ namespace Cheese_Clicker.PlayerClasses
         [XmlElement("PlayerMoney")]
         public long money { get; set; } = 0L;
 
+        [XmlElement("TotalMoneyGained")]
+        public long totalMoneyGained { get; set; } = 0L;
+
+        [XmlElement("MasteryRank")]
+        public short masteryRankLevel { get; set; } = 0;
+
         [XmlElement("clickCount")]
         public int clickCount { get; set; } = 0;
 
@@ -21,10 +27,12 @@ namespace Cheese_Clicker.PlayerClasses
             money = 1000;
         }
 
-        public StatisitcsManager(long inMoney, int inClickCount)
+        public StatisitcsManager(long inMoney, int inClickCount, short inMasteryRankLevel, long inTotalMoney)
         {
             money = inMoney;
             clickCount = inClickCount;
+            masteryRankLevel = inMasteryRankLevel;
+            totalMoneyGained = inTotalMoney;
         }
 
         public void IncrementClickCount()
@@ -35,11 +43,22 @@ namespace Cheese_Clicker.PlayerClasses
         public void AddMoney(long amount)
         {
             money += amount;
+            AddToTotalMoney(amount);
         }
 
         public void RemoveMoney(long amount)
         {
             money -= amount;
+        }
+
+        private void AddToTotalMoney(long amount)
+        {
+            totalMoneyGained += amount;
+        }
+
+        public void IncrementMasteryRankLevel()
+        {
+            masteryRankLevel++;
         }
     }
 }

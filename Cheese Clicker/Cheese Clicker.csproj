@@ -27,6 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Pages\PlayerStatisticsPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Utilities\ReadTextFile.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>

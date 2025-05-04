@@ -115,6 +115,11 @@ namespace Cheese_Clicker.Pages
             DisplayPage(new SettingsPage());
         }
 
+        private void PlayerStatsButton_Click(object sender, RoutedEventArgs e)
+        {
+            DisplayPage(new PlayerStatisticsPage(player));
+        }
+
         private void UpdateMoneyLabel()
         {
             MoneyLabel.Content = $"Money: ${player.statistics.money:N0}";

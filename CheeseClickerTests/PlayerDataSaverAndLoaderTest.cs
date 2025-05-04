@@ -13,7 +13,9 @@ namespace CheeseClickerTests
         {
             long money = 200;
             int clicks = 10;
-            StatisitcsManager player = new StatisitcsManager(money, 10);
+            short masteryRank = 15;
+            long totalMoneyGained = 1000;
+            StatisitcsManager player = new StatisitcsManager(money, clicks, masteryRank, totalMoneyGained);
             ModifierManager manager = new ModifierManager();
             Inventory inventory = new Inventory();
             Player gameState = new Player(player, manager, inventory);
@@ -28,6 +30,8 @@ namespace CheeseClickerTests
 
             Assert.Equal(200, testState.statistics.money);
             Assert.Equal(10, testState.statistics.clickCount);
+            Assert.Equal(15, testState.statistics.masteryRankLevel);
+            Assert.Equal(1000, testState.statistics.totalMoneyGained);
         }
 
         [Fact]

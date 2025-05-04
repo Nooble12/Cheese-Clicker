@@ -13,8 +13,11 @@ namespace Cheese_Clicker;
 /// </summary>
 public partial class App : Application
 {
+    //Default game values
     private long startingMoney = 1000L;
+    private long totalMoneyGained = 0L;
     private int clickCount = 0;
+    private short defaultMasteryRankLevel = 0;
 
     private Player player;
     protected override void OnExit(ExitEventArgs e)
@@ -63,7 +66,7 @@ public partial class App : Application
         }
         else
         {
-            StatisitcsManager statisitcsManager = new StatisitcsManager(startingMoney, clickCount);
+            StatisitcsManager statisitcsManager = new StatisitcsManager(startingMoney, clickCount, defaultMasteryRankLevel, totalMoneyGained);
             ModifierManager modifiers = new ModifierManager();
             Inventory playerInventory = new Inventory();
 
