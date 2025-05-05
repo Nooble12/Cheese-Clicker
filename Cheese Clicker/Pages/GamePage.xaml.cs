@@ -58,6 +58,10 @@ namespace Cheese_Clicker.Pages
                 break;
 
                 case Key.D3:
+                    DisplayPage(new PlayerStatisticsPage(player));
+                break;
+
+                case Key.Escape:
                     DisplayPage(new SettingsPage());
                 break;
             }
