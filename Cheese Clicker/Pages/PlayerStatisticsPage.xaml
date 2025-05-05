@@ -14,9 +14,11 @@
         <Label Content="Player Statistics" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30" ></Label>
         <StackPanel Name="StatStackPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Height="238" Width="780">
             <Label Name="MasteryRankLabel" Content="Mastery Rank: N/A" FontSize="30"></Label>
+            <Label Name="MasteryRankRequirementLabel" Content="Requirement: " FontSize="30"></Label>
             <Label Name="CurrentMoneyLabel" Content="Current Balance: N/A" FontSize="30"></Label>
             <Label Name="TotalMoneyGainedLabel" Content="Total Money Gained: N/A" FontSize="30"></Label>
             <Label Name="TotalClicksLabel" Content="Total Clicks: N/A" FontSize="30"></Label>
         </StackPanel>
+        <Button Name="MasteryRankButton" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Upgrade Mastery Rank" FontSize="30" Background="GreenYellow" Visibility="Hidden" Height="50" Width="311" Template="{DynamicResource CurvedButton}"></Button>
     </Grid>
 </Page>
