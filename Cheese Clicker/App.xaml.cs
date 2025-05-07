@@ -66,7 +66,7 @@ public partial class App : Application
         }
         else
         {
-            StatisitcsManager statisitcsManager = new StatisitcsManager(startingMoney, clickCount, defaultMasteryRankLevel, totalMoneyGained);
+            StatisticsManager statisitcsManager = new StatisticsManager(startingMoney, clickCount, defaultMasteryRankLevel, totalMoneyGained);
             ModifierManager modifiers = new ModifierManager();
             Inventory playerInventory = new Inventory();
 

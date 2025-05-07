@@ -15,7 +15,7 @@ namespace CheeseClickerTests
             int clicks = 10;
             short masteryRank = 15;
             long totalMoneyGained = 1000;
-            StatisitcsManager player = new StatisitcsManager(money, clicks, masteryRank, totalMoneyGained);
+            StatisticsManager player = new StatisticsManager(money, clicks, masteryRank, totalMoneyGained);
             ModifierManager manager = new ModifierManager();
             Inventory inventory = new Inventory();
             Player gameState = new Player(player, manager, inventory);
@@ -37,7 +37,7 @@ namespace CheeseClickerTests
         [Fact]
         public void Saving_And_Loading_ModifierManager()
         {
-            StatisitcsManager player = new StatisitcsManager();
+            StatisticsManager player = new StatisticsManager();
             ModifierManager manager = new ModifierManager();
             Inventory inventory = new Inventory();
             Player gameState = new Player(player, manager, inventory);
@@ -77,7 +77,7 @@ namespace CheeseClickerTests
         [Fact]
         public void Saving_And_Loading_PlayerInventory()
         {
-            StatisitcsManager player = new StatisitcsManager();
+            StatisticsManager player = new StatisticsManager();
             ModifierManager manager = new ModifierManager();
             Inventory inventory = new Inventory();
             Player gameState = new Player(player, manager, inventory);

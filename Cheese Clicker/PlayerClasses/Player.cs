@@ -4,10 +4,10 @@ namespace Cheese_Clicker.PlayerClasses
 {
     public class Player
     {
-        public StatisitcsManager statistics { get; set; }
+        public StatisticsManager statistics { get; set; }
         public ModifierManager modifierManager { get; set; }
         public Inventory inventory { get; set; }
-        public Player(StatisitcsManager inStatsManager, ModifierManager inModifiers, Inventory inInventory)
+        public Player(StatisticsManager inStatsManager, ModifierManager inModifiers, Inventory inInventory)
         {
             statistics = inStatsManager;
             modifierManager = inModifiers;
@@ -16,7 +16,7 @@ namespace Cheese_Clicker.PlayerClasses
 
         public Player()
         {
-            statistics = new StatisitcsManager();
+            statistics = new StatisticsManager();
             modifierManager = new ModifierManager();
             inventory = new Inventory();
         }

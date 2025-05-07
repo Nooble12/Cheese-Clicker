@@ -3,7 +3,7 @@
 namespace Cheese_Clicker.PlayerClasses
 {
     [XmlRoot("PlayerData")]
-    public class StatisitcsManager
+    public class StatisticsManager
     {
         [XmlElement("PlayerMoney")]
         public long money { get; set; } = 0L;
@@ -20,14 +20,14 @@ namespace Cheese_Clicker.PlayerClasses
         [XmlElement("profileName")]
         public string profileName { get; set; } = "LocalProfile";
 
-        public StatisitcsManager()
+        public StatisticsManager()
         {
             profileName = "GameSave";
             clickCount = 0;
             money = 1000;
         }
 
-        public StatisitcsManager(long inMoney, int inClickCount, short inMasteryRankLevel, long inTotalMoney)
+        public StatisticsManager(long inMoney, int inClickCount, short inMasteryRankLevel, long inTotalMoney)
         {
             money = inMoney;
             clickCount = inClickCount;

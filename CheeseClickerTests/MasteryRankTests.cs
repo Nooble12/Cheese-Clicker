@@ -11,7 +11,7 @@ namespace CheeseClickerTests
         public void Rank_Up_Mastery_Rank()
         {
             //public Player(StatisitcsManager inStatsManager, ModifierManager inModifiers, Inventory inInventory)
-            StatisitcsManager statsManager = new StatisitcsManager();
+            StatisticsManager statsManager = new StatisticsManager();
             ModifierManager modManager = new ModifierManager();
             Inventory inventory = new Inventory();
             Player testPlayer = new Player(statsManager, modManager, inventory);
@@ -40,7 +40,7 @@ namespace CheeseClickerTests
         [Fact]
         public void Check_Mastery_Rank_Eligibility()
         {
-            StatisitcsManager statsManager = new StatisitcsManager();
+            StatisticsManager statsManager = new StatisticsManager();
             ModifierManager modManager = new ModifierManager();
             Inventory inventory = new Inventory();
             Player testPlayer = new Player(statsManager, modManager, inventory);

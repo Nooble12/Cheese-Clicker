@@ -26,9 +26,9 @@ namespace Cheese_Clicker.DataSaving
     {
         private string saveFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SaveFiles");
         private string selectedFile = "N/A";
-        private StatisitcsManager player;
+        private StatisticsManager player;
         private ModifierManager modifiers;
-        public SelectProfileWindow(StatisitcsManager inPlayer, ModifierManager inMod)
+        public SelectProfileWindow(StatisticsManager inPlayer, ModifierManager inMod)
         {
             InitializeComponent();
             LoadFileList();
