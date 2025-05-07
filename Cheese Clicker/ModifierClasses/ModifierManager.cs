@@ -1,6 +1,5 @@
 ﻿using Cheese_Clicker.Generators;
 using System.Diagnostics;
-using System.Printing;
 using System.Text;
 using System.Xml.Serialization;
 
@@ -13,6 +12,9 @@ namespace Cheese_Clicker.ModifierClasses
         public List<Modifiers> modifierList = new List<Modifiers>();
 
         private Random generator = new Random();
+
+        //Used in the AddRandomModifier method.
+        private Modifiers randomSelectedModifier;
 
         //Modifier Values
         private int totalAdditiveValue = 0;
@@ -56,6 +58,41 @@ namespace Cheese_Clicker.ModifierClasses
                     totalItemMultiplierValue += inModifier.GetModifierValue();
                     break;
             }
+        }
+
+        public void AddRandomModifier()
+        {
+            Random modifierGenerator = new Random();
+            int modNumber = modifierGenerator.Next(1, 4);
+
+            switch (modNumber)
+            {
+                case 1:
+                    randomSelectedModifier = new AdditiveModifier();
+                break;
+
+                case 2:
+                    randomSelectedModifier = new CriticalChanceModifier();
+                break;
+
+                case 3:
+                    randomSelectedModifier = new CriticalMultiplierModifier();
+                break;
+
+                case 4:
+                    randomSelectedModifier = new MultiplierModifier();
+                break;
+
+                default:
+                    Debug.WriteLine("Error, could not find random mod to apply");
+                break;
+            }
+            AddModifier(randomSelectedModifier);
+        }
+
+        public Modifiers GetRandomModifierResult()
+        {
+            return randomSelectedModifier;
         }
 
         //Only runs on game start up

@@ -51,6 +51,11 @@ namespace Cheese_Clicker.PlayerClasses
             money -= amount;
         }
 
+        public void ResetMoney()
+        {
+            money = 0L;
+        }
+
         private void AddToTotalMoney(long amount)
         {
             totalMoneyGained += amount;

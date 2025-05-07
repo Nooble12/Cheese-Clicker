@@ -19,6 +19,6 @@
             <Label Name="TotalMoneyGainedLabel" Content="Total Money Gained: N/A" FontSize="30"></Label>
             <Label Name="TotalClicksLabel" Content="Total Clicks: N/A" FontSize="30"></Label>
         </StackPanel>
-        <Button Name="MasteryRankButton" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Upgrade Mastery Rank" FontSize="30" Background="GreenYellow" Visibility="Hidden" Height="50" Width="311" Template="{DynamicResource CurvedButton}"></Button>
+        <Button Name="MasteryRankButton" Click="MasteryRankButton_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Upgrade Mastery Rank" FontSize="30" Background="GreenYellow" Visibility="Hidden" Height="50" Width="311" Template="{DynamicResource CurvedButton}"></Button>
     </Grid>
 </Page>

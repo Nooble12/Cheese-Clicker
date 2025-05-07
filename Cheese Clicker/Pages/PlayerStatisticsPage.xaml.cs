@@ -13,12 +13,14 @@ namespace Cheese_Clicker.Pages
     public partial class PlayerStatisticsPage : Page
     {
         private Player player;
+        private MasteryRankManager masteryRankManager;
         public PlayerStatisticsPage(Player inPlayer)
         {
             InitializeComponent();
             player = inPlayer;
+            masteryRankManager = new MasteryRankManager(player);
+            CheckMasteryRankButtonVisibility();
             DisplayPlayerStats();
-            CheckMasteryRankEligibility();
         }
 
         private void DisplayPlayerStats()
@@ -27,7 +29,7 @@ namespace Cheese_Clicker.Pages
             TotalClicksLabel.Content = $"Clicks: {player.statistics.clickCount:N0}";
             TotalMoneyGainedLabel.Content = $"Total Money Gained: ${player.statistics.totalMoneyGained:N0}";
             MasteryRankLabel.Content = "Mastery Rank: " + player.statistics.masteryRankLevel;
-            MasteryRankRequirementLabel.Content = $"Requirement: ${player.statistics.money:N0} / ${GetMasteryRankEligibilityRequirement():N0} ({GetMasteryRankPercent():N0}%)";
+            MasteryRankRequirementLabel.Content = $"Requirement: ${player.statistics.money:N0} / ${masteryRankManager.GetMasteryRankEligibilityRequirement():N0} ({masteryRankManager.GetMasteryRankPercent():N0}%)";
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -35,27 +37,18 @@ namespace Cheese_Clicker.Pages
             SoundManager.PlaySound(SoundEffects.Click);
             NavigationService.GoBack();
         }
-
-        private void CheckMasteryRankEligibility()
+        private void MasteryRankButton_Click(object sender, RoutedEventArgs e)
         {
-           if (player.statistics.money >= GetMasteryRankEligibilityRequirement())
+            SoundManager.PlaySound(SoundEffects.Click);
+            NavigationService.Navigate(new MasteryRankConfirmPage(masteryRankManager, player));
+        }
+
+        private void CheckMasteryRankButtonVisibility()
+        {
+            if (masteryRankManager.CheckMasteryRankEligibility())
             {
                 MasteryRankButton.Visibility = Visibility.Visible;
             }
-
-        }
-
-        private float GetMasteryRankPercent()
-        {
-            float percent =((float)player.statistics.money / GetMasteryRankEligibilityRequirement()) * 100.0f;
-            return percent;
-        }
-
-        private long GetMasteryRankEligibilityRequirement()
-        {
-            double baseValue = 10;
-            long baseMasteryRankRequirement = 1000000; // To rank up to level 1
-            return (long)Math.Pow(baseValue, player.statistics.masteryRankLevel/ 6.0) * baseMasteryRankRequirement;
         }
     }
 }
