@@ -67,7 +67,7 @@ namespace CheeseClickerTests
             Player testPlayer = new Player(statsManager, modManager, inventory);
 
             //Set player mastery rank
-            testPlayer.statistics.masteryRankLevel = 0;
+            testPlayer.statistics.masteryRankLevel = 1;
 
             MasteryRankManager masteryRankManager = new MasteryRankManager(testPlayer);
 
@@ -80,19 +80,19 @@ namespace CheeseClickerTests
                 testPlayer.statistics.IncrementMasteryRankLevel();
             }
 
-            //Manual calculated values for the function: f\left(x\right)\ =\ b^{\frac{x}{10}}\cdot c
+            //Manual calculated values for the function: f\left(x\right)\ =\frac{x^{2}}{10}\cdot c
             List<long> expectedResultsList = new List<long>
             {
-                1000000,
-                1258925,
-                1584893,
-                1995262,
-                2511886,
-                3162277,
-                3981071,
-                5011872,
-                6309573,
-                7943282,
+                100000,
+                400000,
+                900000,
+                1600000,
+                2500000,
+                3600000,
+                4900000,
+                6400000,
+                8100000,
+                10000000,
             };
 
             Assert.Equal(expectedResultsList, actualResultsList);

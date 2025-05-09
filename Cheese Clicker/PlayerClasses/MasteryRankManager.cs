@@ -20,10 +20,9 @@
         }
 
         public long GetMasteryRankEligibilityRequirement()
-        {
-            double baseValue = 10;
-            long baseMasteryRankRequirement = 1000000; // To rank up to level 1
-            return (long) Math.Floor(Math.Pow(baseValue, player.statistics.masteryRankLevel / 10.0) * baseMasteryRankRequirement);
+        {  
+            long baseMasteryRankRequirement = 1000000; // To rank up to level 2
+            return (long) Math.Floor((Math.Pow(player.statistics.masteryRankLevel, 2) / 10.0) * baseMasteryRankRequirement);
         }
 
         public float GetMasteryRankPercent()

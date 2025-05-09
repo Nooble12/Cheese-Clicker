@@ -12,7 +12,7 @@ namespace Cheese_Clicker.PlayerClasses
         public long totalMoneyGained { get; set; } = 0L;
 
         [XmlElement("MasteryRank")]
-        public short masteryRankLevel { get; set; } = 0;
+        public short masteryRankLevel { get; set; } = 1;
 
         [XmlElement("clickCount")]
         public int clickCount { get; set; } = 0;
