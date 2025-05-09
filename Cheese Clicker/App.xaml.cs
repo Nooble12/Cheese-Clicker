@@ -17,7 +17,7 @@ public partial class App : Application
     private long startingMoney = 1000L;
     private long totalMoneyGained = 0L;
     private int clickCount = 0;
-    private short defaultMasteryRankLevel = 0;
+    private short defaultMasteryRankLevel = 1;
 
     private Player player;
     protected override void OnExit(ExitEventArgs e)
