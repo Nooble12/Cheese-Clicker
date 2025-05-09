@@ -23,7 +23,7 @@
         {
             double baseValue = 10;
             long baseMasteryRankRequirement = 1000000; // To rank up to level 1
-            return (long)Math.Pow(baseValue, player.statistics.masteryRankLevel / 10.0) * baseMasteryRankRequirement;
+            return (long) Math.Floor(Math.Pow(baseValue, player.statistics.masteryRankLevel / 10.0) * baseMasteryRankRequirement);
         }
 
         public float GetMasteryRankPercent()

@@ -1,7 +1,6 @@
 ﻿using Cheese_Clicker.Items;
 using Cheese_Clicker.ModifierClasses;
 using Cheese_Clicker.PlayerClasses;
-using Xunit.Sdk;
 
 namespace CheeseClickerTests
 {
@@ -57,6 +56,46 @@ namespace CheeseClickerTests
             testPlayer.statistics.money = 0;
             canRankUp = masteryRankManager.CheckMasteryRankEligibility();
             Assert.False(canRankUp);
+        }
+
+        [Fact]
+        public void Get_Mastery_Rank_Eligibility_Requirement()
+        {
+            StatisticsManager statsManager = new StatisticsManager();
+            ModifierManager modManager = new ModifierManager();
+            Inventory inventory = new Inventory();
+            Player testPlayer = new Player(statsManager, modManager, inventory);
+
+            //Set player mastery rank
+            testPlayer.statistics.masteryRankLevel = 0;
+
+            MasteryRankManager masteryRankManager = new MasteryRankManager(testPlayer);
+
+            List<long> actualResultsList = new List<long>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                long rankUpCost = masteryRankManager.GetMasteryRankEligibilityRequirement();
+                actualResultsList.Add(rankUpCost);
+                testPlayer.statistics.IncrementMasteryRankLevel();
+            }
+
+            //Manual calculated values for the function: f\left(x\right)\ =\ b^{\frac{x}{10}}\cdot c
+            List<long> expectedResultsList = new List<long>
+            {
+                1000000,
+                1258925,
+                1584893,
+                1995262,
+                2511886,
+                3162277,
+                3981071,
+                5011872,
+                6309573,
+                7943282,
+            };
+
+            Assert.Equal(expectedResultsList, actualResultsList);
         }
     }
 }
