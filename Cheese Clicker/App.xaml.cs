@@ -2,6 +2,7 @@
 using Cheese_Clicker.ModifierClasses;
 using Cheese_Clicker.PlayerClasses;
 using Cheese_Clicker.SettingClasses;
+using Cheese_Clicker.Utilities;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -13,12 +14,6 @@ namespace Cheese_Clicker;
 /// </summary>
 public partial class App : Application
 {
-    //Default game values
-    private long startingMoney = 1000L;
-    private long totalMoneyGained = 0L;
-    private int clickCount = 0;
-    private short defaultMasteryRankLevel = 1;
-
     private Player player;
     protected override void OnExit(ExitEventArgs e)
     {
@@ -66,7 +61,11 @@ public partial class App : Application
         }
         else
         {
-            StatisticsManager statisitcsManager = new StatisticsManager(startingMoney, clickCount, defaultMasteryRankLevel, totalMoneyGained);
+            //Loads default values from DefaultGameConfig.json
+            DefaultGameStatsLoader loader = new DefaultGameStatsLoader("DefaultGameConfig.json");
+            DefaultStats stats = loader.GetDefaultStats();
+            StatisticsManager statisitcsManager = new StatisticsManager(stats.startingMoney, stats.clickCount, stats.defaultMasteryRank, stats.totalMoneyGained);
+
             ModifierManager modifiers = new ModifierManager();
             Inventory playerInventory = new Inventory();
 
