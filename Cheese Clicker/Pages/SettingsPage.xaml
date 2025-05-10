@@ -27,6 +27,14 @@
                         <TextBlock Name="SoundEffectTextBox" Text="{Binding ElementName = SoundEffectVolumeSlider, Path= Value}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" Margin="478,0,0,0" Width="55" RenderTransformOrigin="0.302,0.585"></TextBlock>
                     </Grid>
 
+                    <Grid>
+                        <Label Content="Developer Mode" HorizontalAlignment="Left" FontSize="30"></Label>
+                        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40">
+                            <CheckBox x:Name="DevModeCheckBox" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="DevModeCheckBox_Checked" Unchecked="DevModeCheckBox_Unchecked"></CheckBox>
+                        </Viewbox>
+
+                    </Grid>
+
                 </StackPanel>
             </ScrollViewer>
         </Grid>

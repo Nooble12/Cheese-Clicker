@@ -1,7 +1,9 @@
 ﻿using Cheese_Clicker.Animations;
 using Cheese_Clicker.Generators;
 using Cheese_Clicker.PlayerClasses;
+using Cheese_Clicker.SettingClasses;
 using Cheese_Clicker.SoundClasses;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -103,10 +105,12 @@ namespace Cheese_Clicker.Pages
             DisplayPage(new AdminControlPage(player));
         }
 
+        //On back, update page.
         private void GamePage_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateModList(); // Refresh on navigation back
             UpdateMoneyLabel();
+            CheckIfDevButtonActive();
         }
 
         private void Inventory_Click(object sender, RoutedEventArgs e)
@@ -133,6 +137,18 @@ namespace Cheese_Clicker.Pages
         {
             SoundManager.PlaySound(SoundEffects.Click);
             NavigationService.Navigate(page);
+        }
+
+        private void CheckIfDevButtonActive()
+        {
+            if (GameSettings.DevModeIsActive)
+            {
+                AdminControlButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                AdminControlButton.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

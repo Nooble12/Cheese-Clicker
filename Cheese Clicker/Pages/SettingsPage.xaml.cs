@@ -22,6 +22,12 @@ namespace Cheese_Clicker.Pages
             InitializeComponent();
             MusicVolumeSlider.Value = originalMusicLevel;
             SoundEffectVolumeSlider.Value = originalSoundLevel;
+
+            if (GameSettings.DevModeIsActive)
+            {
+                Debug.WriteLine("Dev Mode is on");
+                DevModeCheckBox.IsChecked = true; 
+            }
         }
 
         private void MusicVolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -51,6 +57,18 @@ namespace Cheese_Clicker.Pages
         {
             SoundManager.PlaySound(SoundEffects.Click);
             NavigationService.GoBack();
+        }
+
+        private void DevModeCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            GameSettings.DevModeIsActive = true;
+            Debug.WriteLine("Dev Mode On");
+        }
+
+        private void DevModeCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            GameSettings.DevModeIsActive = false;
+            Debug.WriteLine("Dev Mode off");
         }
     }
 }

@@ -34,6 +34,7 @@ namespace Cheese_Clicker.SettingClasses
         {
             GameSettings.MusicVolumeLevel = inSettings.MusicVolumeLevel;
             GameSettings.SoundEffectVolumeLevel = inSettings.SoundEffectVolumeLevel;
+            GameSettings.DevModeIsActive = inSettings.DevModeIsActive;
         }
     }
 }
