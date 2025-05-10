@@ -4,8 +4,8 @@ namespace Cheese_Clicker.SettingClasses
 {
     public static class GameSettings
     {
-        public static double SoundEffectVolumeLevel { get; set; }
-        public static double MusicVolumeLevel { get; set; } 
-        public static bool DevModeIsActive { get; set; }
+        public static double SoundEffectVolumeLevel { get; set; } = 100;
+        public static double MusicVolumeLevel { get; set; } = 100;
+        public static bool DevModeIsActive { get; set; } = false;
     }
 }
