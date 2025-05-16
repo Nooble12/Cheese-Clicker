@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.Json;
 
-namespace Cheese_Clicker.Utilities
+namespace Cheese_Clicker.DefaultConfig
 {
     public class DefaultGameStatsLoader
     {
@@ -15,7 +15,7 @@ namespace Cheese_Clicker.Utilities
 
         public void DeserializeJsonFile(string fileName)
         {
-            string defaultFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DefaultConfig", fileName);
+            string defaultFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DefaultConfig", "JsonFiles", fileName);
 
            if (File.Exists(defaultFilePath))
            {

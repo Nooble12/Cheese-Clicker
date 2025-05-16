@@ -1,4 +1,4 @@
-﻿namespace Cheese_Clicker.Utilities
+﻿namespace Cheese_Clicker.DefaultConfig
 {
     public class DefaultStats
     {

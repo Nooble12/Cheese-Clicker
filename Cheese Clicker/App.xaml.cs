@@ -1,8 +1,8 @@
 ﻿using Cheese_Clicker.DataSaving;
+using Cheese_Clicker.DefaultConfig;
 using Cheese_Clicker.ModifierClasses;
 using Cheese_Clicker.PlayerClasses;
 using Cheese_Clicker.SettingClasses;
-using Cheese_Clicker.Utilities;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;

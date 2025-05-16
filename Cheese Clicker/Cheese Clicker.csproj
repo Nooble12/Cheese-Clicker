@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DefaultConfig\" />
     <Folder Include="SaveFiles\" />
   </ItemGroup>
 
@@ -41,10 +40,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="DefaultConfig\DefaultGameConfig.json">
+    <None Update="DefaultConfig\JsonFiles\DefaultGameConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="DefaultConfig\DefaultGameConfigTest.json">
+    <None Update="DefaultConfig\JsonFiles\DefaultGameConfigTest.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="resources\Sounds\Click.wav">

@@ -1,5 +1,5 @@
-﻿using Cheese_Clicker.PlayerClasses;
-using Cheese_Clicker.Utilities;
+﻿using Cheese_Clicker.DefaultConfig;
+using Cheese_Clicker.PlayerClasses;
 
 namespace CheeseClickerTests
 {
