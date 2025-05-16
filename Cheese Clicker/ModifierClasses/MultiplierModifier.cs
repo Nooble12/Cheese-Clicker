@@ -1,10 +1,12 @@
 ﻿using System.Text;
+using System.Xml.Serialization;
 
 namespace Cheese_Clicker.ModifierClasses
 {
     public class MultiplierModifier : Modifiers
     {
-        private string name = "Multiplier Modifier";
+        [XmlElement("ModifierName")]
+        public override string name { get; set; } = "Multiplier Modifier";
         private int multiplierValue = 2; // 2 times
         private int duration = 10; // clicks
 
@@ -12,17 +14,6 @@ namespace Cheese_Clicker.ModifierClasses
         {
             return multiplierValue;
         }
-
-        public string GetModifierName()
-        {
-            return name;
-        }
-
-        public int GetDurationName()
-        {
-            return duration;
-        }
-
         public override string ToString()
         {
             StringBuilder builder = new StringBuilder();

@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using Cheese_Clicker.DeveloperTools;
+using System.Xml.Serialization;
 
 namespace Cheese_Clicker.ModifierClasses
 {
@@ -8,10 +9,10 @@ namespace Cheese_Clicker.ModifierClasses
     [XmlInclude(typeof(AdditiveModifier))]
     [XmlInclude(typeof(ItemModifiers))]
     [XmlType("Modifier")]
-    public class Modifiers
+    public class Modifiers : ResultsDisplayable
     {
         [XmlElement("ModifierName")]
-        private string modifierName = "N/A";
+        public virtual string name { get; set; }
 
         [XmlElement("isModActive")]
         private Boolean isActive = false;
@@ -23,6 +24,11 @@ namespace Cheese_Clicker.ModifierClasses
         public virtual int GetModifierValue()
         {
             return modifierValue;
+        }
+
+        public string GetDisplayInfo()
+        {
+            return name;
         }
     }
 }

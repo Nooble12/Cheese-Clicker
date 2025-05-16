@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
+using System.Xml.Serialization;
 
 namespace Cheese_Clicker.ModifierClasses
 {
     public class ComputerItemModifier : ItemModifiers
     {
-        private string name = "Computer Item Multiplier Modifier";
+        [XmlElement("ModifierName")]
+        public override string name { get; set; } = "Computer Item Multiplier Modifier";
         private int multiplierValue = 2; // 2 times
         private int duration = 10; // clicks
 

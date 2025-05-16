@@ -6,27 +6,85 @@
       xmlns:local="clr-namespace:Cheese_Clicker.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Background="Gray"
       Title="AdminControlPage">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="304" Height="143">
-            <Button Name="GiveMultiplyMod" Content="+ 2 Final Multiplier" Click="GiveMultiplyMod_Click"></Button>
-            <Button Name="GiveAddMod" Content="+ $100 Base" Click="GiveAddMod_Click"></Button>
-            <Button Name ="AddCritChanceMod" Content="+ 20% Crit Chance" Click="GiveCritChance_Click"></Button>
-            <Button Name ="AddCritMultiplierMod" Content="+ 2 Crit Multiplier" Click="GiveCritMultiply_Click"></Button>
-            <Button Name ="ClearMods" Content="Clear All Modifiers" Click="ClearAllMods_Click"></Button>
-        </StackPanel>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="385" Width="520">
+            <StackPanel>
+                <TabPanel Margin="10">
+                    <Button Name="ItemAndModifierButton" Content="Items and Modifiers" Click="ItemAndModifierButton_Click" ></Button>
+                    <Button Name="PlayerStatsButton" Content="Player Statistics" Click="PlayerStatsButton_Click"></Button>
+                </TabPanel>
 
-        <StackPanel Margin="248,268,248,80">
-            <Button Name="GiveCheeseItem" Content="+ 1 Cheese Item" Click="GiveCheeseItem_Click"></Button>
-            <Button Name="RemoveCheeseItem" Content="- 1 Cheese Item" Click="RemoveCheeseItem_Click"></Button>
-            <Button Name="GiveComputerItem" Content="+ 1 Computer Item" Click="GiveComputerItem_Click"></Button>
-            <Button Name="RemoveComputerItem" Content="- 1 Computer Item" Click="RemoveComputerItem_Click"></Button>
-        </StackPanel>
-        <Label Name="InventoryLabel" Content="Inventory: " Margin="10,150,566,154">
-            
-        </Label>
-        
+                <Grid Name="ModifierAndItemGrid" Visibility="Collapsed">
+                    <StackPanel Name="ResultsStackPanel" Margin="10">
+                        <TextBox Name="SearchBox" Margin="0,0,0,0" HorizontalAlignment="Center" Width="500" Text="Search Here" TextChanged="SearchBox_TextChanged" Background="Azure"></TextBox>
+                        <ListBox Name="ResultsListBox" Height="270">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="5,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Content="{Binding name}" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
+                                        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0">
+                                            <Button Name="AddButton" Click= "AddButton_Click" Content="+" Margin="0,0,5,0" />
+                                            <Button Name="RemoveButton" Click= "RemoveButton_Click" Content="-" />
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Label Content="Results Found: " Name="ResultsFoundLabel" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Name="PlayerStatsGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="147*"/>
+                        <ColumnDefinition Width="373*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="10,0,0,0" Grid.ColumnSpan="2">
+                        <Grid x:Name="PlayerMoneyGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBox Name="SetMoneyTextBox" MouseDoubleClick="SetMoneyTextBox_MouseDoubleClick" Text="Set Money" Grid.Column="0" Background="Azure"></TextBox>
+                            <Button Name="ApplyMoneyButton" Grid.Column="1" Content="Apply Money" Click="ApplyMoneyButton_Click"></Button>
+                        </Grid>
+
+                        <Grid x:Name="MasteryRankGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox Name="SetMasteryRankTextBox" MouseDoubleClick="SetMasteryRankTextBox_MouseDoubleClick" Text="Set Mastery Rank" Grid.Column="0" Background="Azure" ></TextBox>
+                            <Button Name="ApplyMasteryRank" Click="ApplyMasteryRank_Click" Grid.Column="2" Content="Apply Mastery Rank"></Button>
+                        </Grid>
+
+                        <Grid x:Name="ClickStatGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox Name="SetClickCountButton" MouseDoubleClick="SetClickCountButton_MouseDoubleClick" Text="Set Click Count" Grid.Column="0" Background="Azure" ></TextBox>
+                            <Button Name="ApplyClickCountButton" Click="ApplyClickCountButton_Click" Grid.Column="2" Content="Apply Click Count"></Button>
+                        </Grid>
+
+                        <TextBox Background="Transparent" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Name="ChangeLogTextBox" Text="" Height="180" FontSize="20"></TextBox>
+                        
+                    </StackPanel>
+
+                </Grid>
+
+            </StackPanel>
+        </Grid>
         <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Back" Margin="10,0,0,10" Click="BackButton_Click" Width="97" Height="45" Template="{DynamicResource CurvedButton}"></Button>
     </Grid>
 </Page>

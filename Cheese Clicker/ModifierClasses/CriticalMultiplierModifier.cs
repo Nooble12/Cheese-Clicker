@@ -1,11 +1,14 @@
 ﻿using System.Text;
+using System.Xml.Serialization;
 
 namespace Cheese_Clicker.ModifierClasses
 {
     public class CriticalMultiplierModifier : Modifiers
     {
         private int multiplierValue = 2;
-        private string name = "Critical Multiplier Modifier";
+
+        [XmlElement("ModifierName")]
+        public override string name { get; set; } = "Critical Multiplier Modifier";
 
         public override int GetModifierValue()
         {

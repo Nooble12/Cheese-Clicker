@@ -1,4 +1,5 @@
-﻿using Cheese_Clicker.PlayerClasses;
+﻿using Cheese_Clicker.DeveloperTools;
+using Cheese_Clicker.PlayerClasses;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices.Marshalling;
@@ -9,7 +10,7 @@ namespace Cheese_Clicker.Items
 {
     [XmlInclude(typeof(CheeseItem))]
     [XmlInclude(typeof(ComputerItem))]
-    public class Item
+    public class Item : ResultsDisplayable
     {
         [XmlElement("ItemName")]
         public virtual string name { get; set; }
@@ -72,6 +73,11 @@ namespace Cheese_Clicker.Items
         public override int GetHashCode()
         {
             return name.GetHashCode(); 
+        }
+
+        public string GetDisplayInfo()
+        {
+            return name;
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System.Text;
+using System.Xml.Serialization;
 
 namespace Cheese_Clicker.ModifierClasses
 {
     public class AdditiveModifier : Modifiers
     {
-        private string name = "Additive Modifier";
+        [XmlElement("ModifierName")]
+        public override string name { get; set; } = "Additive Modifier";
         private int additiveValue = 100;
 
         public override int GetModifierValue()

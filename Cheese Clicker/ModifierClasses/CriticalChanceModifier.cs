@@ -1,11 +1,14 @@
 ﻿using System.Text;
+using System.Xml.Serialization;
 
 namespace Cheese_Clicker.ModifierClasses
 {
     public class CriticalChanceModifier : Modifiers
     {
         private int additiveCriticalPercentChance = 20; // plus 20 percent critical chance on base
-        private string name = "Critical Chance Modifier";
+
+        [XmlElement("ModifierName")]
+        public override string name { get; set; } = "Critical Chance Modifier";
 
         public override int GetModifierValue()
         {

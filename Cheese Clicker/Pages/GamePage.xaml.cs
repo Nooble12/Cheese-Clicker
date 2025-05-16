@@ -110,6 +110,7 @@ namespace Cheese_Clicker.Pages
         {
             UpdateModList(); // Refresh on navigation back
             UpdateMoneyLabel();
+            UpdateClickLabel();
             CheckIfDevButtonActive();
         }
 
@@ -131,6 +132,10 @@ namespace Cheese_Clicker.Pages
         private void UpdateMoneyLabel()
         {
             MoneyLabel.Content = $"Money: ${player.statistics.money:N0}";
+        }
+        private void UpdateClickLabel()
+        {
+            ClickCountLabel.Content = $"Clicks: {player.statistics.clickCount:N0}";
         }
 
         private void DisplayPage(Page page)
